@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "objtab.h": "c",
+      "my_types.h": "c",
+      "main_px_bat.h": "c",
+      "usercapi.h": "c",
+      "usercevents.h": "c",
+      "gsthread.h": "c",
+      "vechleicons.h": "c",
+      "vartab.h": "c",
+      "vertbar.h": "c",
+      "math.h": "c"
+    }
+  }
+}

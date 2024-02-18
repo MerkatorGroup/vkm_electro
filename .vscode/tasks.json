@@ -1,0 +1,111 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build: Export GDZ file",
+            "type": "shell",
+            "windows": { "options": { "shell": { "executable": "cmd.exe", "args": [ "/d", "/c"]}}},
+            "command": "${workspaceRoot}/.vscode/export.cmd",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build: Export GDZ file with OS",
+            "type": "shell",
+            "windows": { "options": { "shell": { "executable": "cmd.exe", "args": [ "/d", "/c"]}}},
+            "command": "${workspaceRoot}/.vscode/export.cmd withos",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build: Export GDZ file with OS and general Reset",
+            "type": "shell",
+            "windows": { "options": { "shell": { "executable": "cmd.exe", "args": [ "/d", "/c"]}}},
+            "command": "${workspaceRoot}/.vscode/export.cmd genreset",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build: Show GSe-VISU",
+            "type": "shell",
+            "windows": { "options": { "shell": { "executable": "cmd.exe", "args": [ "/d", "/c"]}}},
+            "command": "${workspaceRoot}/.vscode/show.cmd",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build: Upload to device using GSe-UP",
+            "type": "shell",
+            "windows": { "options": { "shell": { "executable": "cmd.exe", "args": [ "/d", "/c"]}}},
+            "command": "${workspaceRoot}/.vscode/upload.cmd",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build: Make C code",
+            "type": "shell",
+            "windows": { "options": { "shell": { "executable": "cmd.exe", "args": [ "/d", "/c"]}}},
+            "command": "${workspaceRoot}/.vscode/build.cmd",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build: Rebuild C code ",
+            "type": "shell",
+            "windows": { "options": { "shell": { "executable": "cmd.exe", "args": [ "/d", "/c"]}}},
+            "command": "${workspaceRoot}/.vscode/build.cmd rebuild",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build: Clean C code ",
+            "type": "shell",
+            "windows": { "options": { "shell": { "executable": "cmd.exe", "args": [ "/d", "/c"]}}},
+            "command": "${workspaceRoot}/.vscode/build.cmd clean",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}

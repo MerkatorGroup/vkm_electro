@@ -1,0 +1,6 @@
+ATAdvInstrument.
+ATBargraph.
+ATIndexBitmap.
+ATSimpleBitmap.
+ATTrueTypeText.
+ATTrueTypeVariable.

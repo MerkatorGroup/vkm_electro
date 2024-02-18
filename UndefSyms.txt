@@ -1,0 +1,16 @@
+         U __get_errno_ptr
+         U free
+         U malloc
+         U memset
+         U pthread_cancel
+         U pthread_create
+         U pthread_exit
+         U pthread_join
+         U pthread_mutex_destroy
+         U pthread_mutex_init
+         U pthread_mutex_lock
+         U pthread_mutex_trylock
+         U pthread_mutex_unlock
+         U pthread_testcancel
+         U sprintf
+         U usleep

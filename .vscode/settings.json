@@ -1,0 +1,58 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "C_Cpp.intelliSenseEngine": "Default",
+    "files.associations": {
+        "algorithm": "cpp",
+        "utility": "cpp",
+        "tuple": "cpp",
+        "string": "cpp",
+        "config.h": "c",
+        "sstream": "cpp"
+    },
+    // Configure glob patterns for excluding files and folders.
+    "files.exclude": {
+        "**/.gpes": true,
+        "**/c.tag": true,
+        "**/*.a": true,
+        "**/*.so": true,
+        "**/*.o": true,
+        "**/*.ow32": true,
+        "**/.dep": true,
+        "**/.dsc": true,
+        "**/.zip": true,
+        "**/.bak": true,
+        "**/.git": true,
+        "**/.build": true,
+        "**/.svn": true,
+        "**/*.XML": true,
+        "**/*.xml": true,
+        "**/*.txt": true,
+        "**/*.BIN": true,
+        "**/*.avl": true,
+        "**/*.dev": true,
+        "**/*.dvs": true,
+        "**/*.gds": true,
+        "**/*.dsc": true,
+        "**/*.ini": true,
+        "**/srclist.mk": true,
+        "**/FONTS": true,
+        "**/TOUCHKEYS": true,
+        "**/VECTORGRAPHICS": true,
+        "**/makefile": true,
+        "**/EXPORT": true,
+        "**/gbkpt": true,
+        "**/.DS_Store": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onWindowChange",
+    "editor.renderWhitespace": "boundary",
+    "editor.cursorStyle": "line-thin",
+    "terminal.integrated.scrollback": 10000,
+    // Columns at which to show vertical rulers
+    "editor.rulers": [80],
+    "workbench.colorCustomizations":
+    {
+        "editor.lineHighlightBorder": "#974c13",
+        "editorRuler.foreground": "#404040"
+    }
+}
