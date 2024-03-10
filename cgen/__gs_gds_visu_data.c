@@ -17,7 +17,7 @@ typedef struct tagVisMaskColorTabEntry
 }tVisMaskColorTabEntry;
 
 const uint32_t _gs_ColorTableOffset = 512;
-const uint32_t _gs_ContainerCnt = 3;
+const uint32_t _gs_ContainerCnt = 4;
 const uint32_t _gs_MaskCnt = 4;
 
 const tVisMaskColorTabEntry _gs_visMaskColorTab[] =
@@ -27,9 +27,10 @@ const tVisMaskColorTabEntry _gs_visMaskColorTab[] =
           0,   65535,   65535,     1,  // container: VelcheIcons_1
           1,   65535,   65535,     1,  // container: DashCont
           2,   65535,   65535,     1,  // container: Container2
-          0,   65535,   65535,     0,  // mask: Mask0
+          3,   65535,   65535,     1,  // container: ContParam
+          0,   65535,   65535,     0,  // mask: 0
           1,   65535,   65535,     0,  // mask: Mask1
-          2,   65535,   65535,     0,  // mask: Mask2
-          3,   65535,   65535,     0   // mask: Mask3
+          2,   65535,   65535,     0,  // mask: DashBoard
+          3,   65535,   65535,     0   // mask: Mask_PARAM
 };
 

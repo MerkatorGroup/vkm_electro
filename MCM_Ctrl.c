@@ -1,21 +1,17 @@
 ﻿/****************************************************************************
  *
  * Project:   name
- *
  * @file      project.c
  * @author    author
  * @date      [Creation date in format %02d.%02d.20%02d]
- *
  * @brief     description
- *
  * @version   0.1
- *
  * @copyright copyright (c) [Actual Year] by your company
  *
  ****************************************************************************/
 
 #include "main_px_bat.h"
-
+static tCanMessage buff[16];
 tGsThread id_MCMThread;
 void *Thread_MCM(void *arg);
 int parseMCM(tCanMessage *msg);
@@ -39,29 +35,28 @@ int Ini_MCM_Thread(void) {
 }
 
 void *Thread_MCM(void *arg) {
-    u32 Timer_1 = 5;  // x20ms
+    u32 Timer_ReqDout = 5;  // x20ms
     while (1) {
         //~~~~~~~~~~~~~~
         tCanMessage *tMsg = (tCanMessage *)&buff[1];
         u32 n = CANReadFiFo(FifoRX_MCM, tMsg, 1);
         if (n) parseMCM(tMsg);
-        //////simulation/////
+            //////simulation/////
 #ifdef SIMULATION
-		extern tCanMessage* sim_msg;
+        extern tCanMessage *sim_msg;
         if (gsThreadMutexTrylock(&mtx) != 0) {
             if ((sim_msg != NULL) && (sim_msg->id == 0x22)) {
-                 parseMCM(sim_msg);
+                parseMCM(sim_msg);
                 sim_msg = NULL;
             }
             gsThreadMutexUnlock(&mtx);
         }
 #endif
 
-
-        if (Timer_1) Timer_1--;  // 100ms
+        if (Timer_ReqDout) Timer_ReqDout--;  // 100ms
         else {
             MCM_request_DOut();
-            Timer_1 = 5;
+            Timer_ReqDout = 5;
         }
         usleep(20000);  /// 20 ms
     }
@@ -74,18 +69,24 @@ int parseMCM(tCanMessage *msg) {
         u16 CurrHNDL = msg->data.u8[1] + (u16)(msg->data.u8[2] << 8);
         int32_t Data = msg->data.u32[1];
         if (CurrHNDL == 2000) {
-            if (CurrMCM == 0x22) SetVar(HDL_IGNITION_IS_ON, Data & 1);
+            if (CurrMCM == 0x22) {
+                // u8 ti = ((Data & 0x10) == 0x10);
+                // SetVar(HDL_KEY_POSITION, ti);
+                u8 ti = Data & 0x11;
+                SetVar(HDL_KEY_POSITION , ti==0x10?1:ti==0x11?2:0);
+            }
         }
     }
-
     return 0;
 }
 
 void SetDOut(u8 NumDout, u8 val) {
     while (MutexTX) {
     };
-    if (val) MCM_DOut |= (1 << NumDout);
-    else MCM_DOut &= ~(1 << NumDout);
+    if (val)
+        MCM_DOut |= (1 << NumDout);
+    else
+        MCM_DOut &= ~(1 << NumDout);
 }
 
 void MCM_request_DOut(void) {
@@ -100,7 +101,7 @@ void MCM_request_DOut(void) {
     tx_msg.data.u8[1] = 0xD8;
     tx_msg.data.u8[2] = 0x07;
     tx_msg.data.u8[3] = 0;          //
-    tx_msg.data.u32[2] = MCM_DOut;  //
+    tx_msg.data.u32[1] = MCM_DOut;  //
     CANSendMsg(&tx_msg);
     MutexTX = 0;
 }

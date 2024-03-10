@@ -10,7 +10,7 @@
 //**************************************
 
 static const VechleIcon_map IcoNums [15] = {
-    {ICO_NUM_10, HDL_ICOINDX_10 }, // key ignition
+    {ICO_NUM_10, HDL_ICOINDX_10 }, // System start after starter key
 	{ICO_NUM_11, HDL_ICOINDX_11},  // Low Bat
     {ICO_NUM_12, HDL_ICOINDX_12},  // Temperature Inv
 	{ICO_NUM_13, HDL_ICOINDX_13},  // Inv Ready- ERRor
@@ -26,7 +26,7 @@ static const VechleIcon_map IcoNums [15] = {
 	{ICO_NUM_23, HDL_ICOINDX_23},
     {ICO_NUM_24, HDL_ICOINDX_24}}; // Low Level voltage on Inv
 
-static u8 stat[15] = {0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+static u8 stat[15] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 void* Thread_VechleIcoPanel(void* arg);
 // tGsThread VechleIcons_Thread;
 // int CreateVechleIconsThread(void) {
@@ -70,6 +70,11 @@ void vechleicons_show(void) {
 
 void vechleicons_Set_stat(u8 numIcon, u8 val) {
 	stat[numIcon]= val;
+}
+void vechleicons_Reset() {
+    for (size_t i = 0; i < 15; i++) {
+       stat[i]= 0; /* code */
+    }
 }
 
 /////////////////

@@ -12,7 +12,7 @@
 #include "main_px_bat.h"
 
 // void SetPWM_5PIN(int32_t Direct);
-tCanMessage buff[16]; 
+
 tGsMutex mtx;
 // u8 WDT_LEDS[32];
 /****************************************************************************
@@ -20,16 +20,11 @@ tGsMutex mtx;
  ****************************************************************************/
 int UserCInit(uint32_t initFlags) {
     vechleicons_show();
-
-    int r = Ini_MCM_Thread();
-    r = Ini_EngInv_Thread();
-    r = Ini_AKB_Thread();
-
-    r = Ini_Thread_MAIN();
+    int r = Ini_Thread_MAIN();
 #ifdef SIMULATION
     r = Ini_SIMULATION_Thread();
 #endif
-    MaskOn(2);
+    MaskOn(MSK_DASHBOARD);
     return 50;
 }
 
@@ -59,16 +54,16 @@ void UserCCycle(uint32_t evtc, tUserCEvt *evtv) {
                         //  SendRequest_BAT_ON_OFF (1);
                         //  SetVar(HDL_IS_OFF,0);
                         // }
-                        MaskOn(0);
-                        MaskOff(2);
+                        MaskOn(MSK_DASHBOARD);
+                        MaskOff(MSK_MASK_PARAM);
                         break;
                     case 2:
                         // if(GetVar(HDL_IS_OFF)==0){
                         // 	SendRequest_BAT_ON_OFF(0);
                         //  	SetVar(HDL_IS_OFF,1);
                         // }
-                        MaskOn(2);
-                        MaskOff(0);
+                        MaskOn(MSK_MASK_PARAM);
+                        MaskOff(MSK_DASHBOARD);
                         break;
                     case 3:
                         break;

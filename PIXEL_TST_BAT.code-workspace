@@ -15,7 +15,10 @@
       "vechleicons.h": "c",
       "vartab.h": "c",
       "vertbar.h": "c",
-      "math.h": "c"
+      "math.h": "c",
+      "stdlib.h": "c",
+      "j1939.h": "c",
+      "stdint.h": "c"
     }
   }
 }

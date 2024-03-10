@@ -21,6 +21,9 @@ SRC += MAIN_Thread.c
 SRC += .\src\VechleIcons.c 
 SRC += .\src\VertBar.c 
 SRC += .\SIMULATION\simul.c 
+SRC += Hyd_Inv_Ctrl.c 
+SRC += .\src\J1939\j1939.c 
+SRC += .\src\J1939\Spn.c 
 # Debug options
 FLAG_DEBUG = 0
 FLAG_WINSIMU = 1

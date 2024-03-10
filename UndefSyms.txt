@@ -1,7 +1,6 @@
          U __get_errno_ptr
          U free
          U malloc
-         U memset
          U pthread_cancel
          U pthread_create
          U pthread_exit

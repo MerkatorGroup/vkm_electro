@@ -4,3 +4,4 @@ ATIndexBitmap.
 ATSimpleBitmap.
 ATTrueTypeText.
 ATTrueTypeVariable.
+ATQuad.

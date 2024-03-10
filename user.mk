@@ -7,8 +7,6 @@
 
 #SRC += .\src\VechleIcons.c
 
-
-
 # Debug options
 #FLAG_DEBUG = 0
 #FLAG_WINSIMU = 1
@@ -19,6 +17,8 @@
 
 INCDIRS += ./src
 INCDIRS += ./SIMULATION
+INCDIRS += ./userInc
+INCDIRS += ./src/J1939
 
 
 

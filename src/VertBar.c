@@ -11,11 +11,11 @@
 //**************************************
 #define NUM_BARS 4
 
-VertBar vBAr[NUM_BARS] = {
-    {HDL_INVERTER_CURRENT, 0, 650, HDL_INV_CURRENT_BAR},
-    {HDL_CURRENT, 0, 650, HDL_BAT_CURRENT_BAR},
+DashObj vBAr[NUM_BARS] = {
+    {HDL_INVERTER_CURRENT, 0, 100, HDL_INV_CURRENT_BAR},
+    {HDL_CURRENT, 0, 100, HDL_BAT_CURRENT_BAR},
 
-    {HDL_INVERTER_VOLTAGE, 0, 360, HDL_INV_VOLT_BAR},
+    {HDL_INVERTER_CURRENT_HYD, 0, 100,HDL_INV_CURRENT_BAR_HYD },
     {HDL_DISCH_PWR, 0, 800, HDL_BAT_DISCHARG_BAR},
 };
 
@@ -24,14 +24,26 @@ VertBar vBAr[NUM_BARS] = {
 // const VertBar INV_Volt;
 // const VertBar Bat_Volt;
 // void* res = malloc(sizeof(VertBar));
-#define abs(x) x < 0? x *= (-1):x
-void VertBars_Run(void) {
+
+static void VertBars_Run(void) {
     for (u8 i = 0; i < NUM_BARS; i++) {
-        VertBar* curr = &vBAr[i];
+        DashObj* curr = &vBAr[i];
         int v = GetVar(curr->HDL_RefValue);
-        v = abs(v);
+        v = mabs(v);
         u8 k = (curr->Max - curr->Min) / 11;
         int indx = (int)(v / k);
         SetVar(curr->HDL_Bar_indx_val, indx);
     }
+}
+
+DashObj vArowObj[] = {
+{HDL_INVERTER_RPM, 400, 2400, HDL_RPM_ARROW},
+};
+void DashBoardCycle(void) {
+    VertBars_Run( );
+
+
+
+
+
 }

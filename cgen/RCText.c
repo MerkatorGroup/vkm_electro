@@ -8,8 +8,8 @@
 #include <RCText.h>
 #include <UserCAPI.h>
 
-#define MIN_TEXT_OFFSET 289888
-#define MAX_TEXT_OFFSET 289888
+#define MIN_TEXT_OFFSET 512
+#define MAX_TEXT_OFFSET 512
 
 static char buffer[64];
 

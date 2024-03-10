@@ -48,7 +48,7 @@ const char* RCTextGetText(uint32_t offset, uint32_t lngIdx);
   Now the offsets to be used for above functions
   RCTextGetText(..) and RCTextGetListElement(..)
 */
-#define RCTEXT_T_DEFAULT 289888		// Default (Default)
+#define RCTEXT_T_DEFAULT 512		// Default (Default)
 
 #endif  //_RCTEXT_H_
 

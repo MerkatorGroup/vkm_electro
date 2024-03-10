@@ -10,4 +10,5 @@ const char __gs_ExportedPlugins[] =
   "ATIndexBitmap.\r\n"
   "ATSimpleBitmap.\r\n"
   "ATTrueTypeText.\r\n"
-  "ATTrueTypeVariable.\r\n";
+  "ATTrueTypeVariable.\r\n"
+  "ATQuad.\r\n";
