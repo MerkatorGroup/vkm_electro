@@ -17,8 +17,8 @@ typedef struct tagVisMaskColorTabEntry
 }tVisMaskColorTabEntry;
 
 const uint32_t _gs_ColorTableOffset = 512;
-const uint32_t _gs_ContainerCnt = 4;
-const uint32_t _gs_MaskCnt = 4;
+const uint32_t _gs_ContainerCnt = 5;
+const uint32_t _gs_MaskCnt = 5;
 
 const tVisMaskColorTabEntry _gs_visMaskColorTab[] =
 {
@@ -28,9 +28,11 @@ const tVisMaskColorTabEntry _gs_visMaskColorTab[] =
           1,   65535,   65535,     1,  // container: DashCont
           2,   65535,   65535,     1,  // container: Container2
           3,   65535,   65535,     1,  // container: ContParam
+          4,   65535,   65535,     1,  // container: Container4
           0,   65535,   65535,     0,  // mask: 0
           1,   65535,   65535,     0,  // mask: Mask1
           2,   65535,   65535,     0,  // mask: DashBoard
-          3,   65535,   65535,     0   // mask: Mask_PARAM
+          3,   65535,   65535,     0,  // mask: Mask_PARAM
+          4,   65535,   65535,     0   // mask: WorkSite
 };
 

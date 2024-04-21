@@ -12,4 +12,5 @@
          U pthread_mutex_unlock
          U pthread_testcancel
          U sprintf
+         U strcmp
          U usleep

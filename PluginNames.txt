@@ -1,7 +1,9 @@
 ATAdvInstrument.
 ATBargraph.
 ATIndexBitmap.
+ATResTTTextList.
 ATSimpleBitmap.
 ATTrueTypeText.
 ATTrueTypeVariable.
+ATEllipse.
 ATQuad.

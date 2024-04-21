@@ -8,8 +8,10 @@
 #include <RCText.h>
 #include <UserCAPI.h>
 
-#define MIN_TEXT_OFFSET 512
-#define MAX_TEXT_OFFSET 512
+#define MIN_TEXT_OFFSET 569280
+#define MAX_TEXT_OFFSET 569412
+#define MIN_LIST_OFFSET 569432
+#define MAX_LIST_OFFSET 569432
 
 static char buffer[64];
 
@@ -39,6 +41,32 @@ const char *RCTextGetText(uint32_t offset, uint32_t lngIdx)
   else
   {
     return ((const char*)TextResItem) + offsetToString;
+  }
+}
+
+//-------------------------------------------------
+const char *RCTextGetListElement(uint32_t offset, uint32_t listIdx, uint32_t lngIdx)
+{
+  uint32_t numText;
+  
+  const uint8_t *ResourceBaseAdr = GetResDataBase();
+  const uint32_t *TextResItem = (const uint32_t *)(const void *)(ResourceBaseAdr + offset);
+  
+  //Here we calculate the base address of the text to be displayd
+  numText = TextResItem[0];
+  if(listIdx >= numText)
+  {
+    listIdx = numText - 1;
+  }
+  
+  if((offset<MIN_LIST_OFFSET) || (offset>MAX_LIST_OFFSET))
+  {
+    sprintf(buffer,"Invalid pointer 0x%08x to list",offset);
+    return buffer;
+  }
+  else
+  {
+    return RCTextGetText(TextResItem[listIdx + 1],lngIdx);
   }
 }
 

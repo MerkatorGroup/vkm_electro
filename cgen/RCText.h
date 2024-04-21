@@ -35,20 +35,58 @@ extern "C"
  *------------------------------------------------*/
 const char* RCTextGetText(uint32_t offset, uint32_t lngIdx);
 
+/**-----------------------------------------------
+ * RCTextGetListElement
+ *
+ * Retrieves a text list element from the text resource
+ * (a text from a text list from the text resource)
+ *
+ * @param offset:  offset into the resource text table. Use offset
+ *                 symbols "RCTEXT_L_..." from below to access
+ * @param listIdx: Index of the element in the list (0,1,2,..)
+ * @param lngIdx:  Language index
+ *                 Use GetVar(HDL_SYS_LANGUAGE) here
+ *------------------------------------------------*/
+const char* RCTextGetListElement(uint32_t offset, uint32_t listIdx, uint32_t lngIdx);
+
 #ifdef __cplusplus
 }
 #endif
 
-#define RCTEXT_CNT_G 1  // groups
+#define RCTEXT_CNT_G 2  // groups
 #define RCTEXT_CNT_GT_DEFAULT 1  // group texts
-#define RCTEXT_CNT_T 1  // texts (all together)
-#define RCTEXT_CNT_L 0  // lists
+#define RCTEXT_CNT_GT_WORKSTAT_STR 8  // group texts
+#define RCTEXT_CNT_T 9  // texts (all together)
+#define RCTEXT_CNT_L 1  // lists
+#define RCTEXT_CNT_LT_IDLE 8  // list texts
 
 /*
   Now the offsets to be used for above functions
   RCTextGetText(..) and RCTextGetListElement(..)
 */
-#define RCTEXT_T_DEFAULT 512		// Default (Default)
+#define RCTEXT_T_DEFAULT 569280		// Default (Default)
+#define RCTEXT_T_IDLE 569296		// IDLE (workstat_STR)
+#define RCTEXT_L_IDLE_ 569432		// IDLE
+#define RCTEXT_T_ON_START 569328		// ON_START (workstat_STR)
+#define RCTEXT_T_ON_STOP 569396		// ON_STOP (workstat_STR)
+#define RCTEXT_T_ON_WORK 569364		// ON_WORK (workstat_STR)
+#define RCTEXT_T_START 569312		// START (workstat_STR)
+#define RCTEXT_T_STOP 569380		// STOP (workstat_STR)
+#define RCTEXT_T_WAIT 569348		// WAIT (workstat_STR)
+#define RCTEXT_T_WAIT_STOP 569412		// WAIT_STOP (workstat_STR)
+
+/*
+  Now the text list indices to be used for e.g. OS functions
+  like SetVar(..) and GetVar(..)
+*/
+#define RCTEXT_LI_IDLE_WORKSTAT_STR_IDLE 0
+#define RCTEXT_LI_IDLE_WORKSTAT_STR_START 1
+#define RCTEXT_LI_IDLE_WORKSTAT_STR_ON_START 2
+#define RCTEXT_LI_IDLE_WORKSTAT_STR_WAIT 3
+#define RCTEXT_LI_IDLE_WORKSTAT_STR_ON_WORK 4
+#define RCTEXT_LI_IDLE_WORKSTAT_STR_STOP 5
+#define RCTEXT_LI_IDLE_WORKSTAT_STR_ON_STOP 6
+#define RCTEXT_LI_IDLE_WORKSTAT_STR_WAIT_STOP 7
 
 #endif  //_RCTEXT_H_
 

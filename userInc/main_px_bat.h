@@ -15,6 +15,7 @@
 #include "vartab.h" /* Variable Table definitions:                    */
 
 #include "objtab.h" /* Object ID definitions:  */
+#include "gsToVisu.h"
 
 #include "my_types.h"
 #include "gsThread.h"
@@ -23,6 +24,8 @@
 #include "VertBar.h"
 #include "simul.h"
 #include "m_j1939.h"
+#include "mr_MCM.h"
+#include "work_site.h"
 
 
 
@@ -34,12 +37,14 @@
 #define FillOnCircL(x,min,max)  x < min ?  (x = max)  :  x > max ? (x =min)  : (x = x)
 #define FillOnBand(x,min,max)  x < min ?  (x = min )  :  x > max ? (x = max)  : (x = x)
 #define constrain(x,min,max)  x < min ?  min   :  x > max ? max   : (x )
+#define dec_elapced(x) x > 0 ? x--, 0 : 1
+
 
 #define ENABLE 1
 #define DISABLE 0
 #define RelayPowerEn(x) SetDOut(0,x)
 
-#define ShassieCAN_ch 0
+#define ShassieCAN_ch 1
 #define MCM_CAN_ch 0
 #define TX_to_MCM_CAN_ADR 0x21
 #define MCM_ADR_EXT 0
@@ -52,7 +57,8 @@
 #define WDT_TIME 50
 
 #define mabs(x) x<0?x*=(-1):x
-typedef enum{
+
+typedef enum _e_mode_op{
 	IDLE = 0,
 	START,
 	ON_START,
@@ -64,7 +70,7 @@ typedef enum{
 }e_mode_op;
 
 
-extern e_mode_op mode_operation;
+extern u8 mode_operation;
 
 
 extern void Inv_Eng_resetAll(void);
@@ -72,6 +78,8 @@ extern int Ini_EngInv_Thread(void);
 
 extern int Ini_AKB_Thread(void) ;
 extern int Ini_HydrInv_Thread(void);
+extern void make_hyd_torq_vs_rpm(u32 reqRpm);
+
 extern void Inv_Hydr_resetAll(void);
 extern int Ini_MCM_Thread(void);
 extern int Ini_Thread_MAIN(void);
@@ -134,4 +142,5 @@ u8 Inv_OnLine;
 }t_Inv_Profile;
 extern t_Inv_Profile Inv_Engine;
 extern  t_Inv_Profile Inv_Hydr;
+extern  tMr_SLV_DEV SlvMCMs[4];
 #endif

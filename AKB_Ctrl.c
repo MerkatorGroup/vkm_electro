@@ -126,7 +126,7 @@ static void* Thread_AKB(void* arg) {
 					s32 pos_cont = GetValueSpn(8091, &valid_p);
 					s32 neg_cont = GetValueSpn(8092, &valid_n);
 					if((valid_p == 1)&&(valid_n == 1)){
-						if((pos_cont == 0)&& (neg_cont == 1))
+						if((pos_cont == 0)&& (neg_cont == 0))
 						HVBattery.BatON_OFF_REQ = IDLE;
 					}
 				}

@@ -8,7 +8,9 @@ const char __gs_ExportedPlugins[] =
   "ATAdvInstrument.\r\n"
   "ATBargraph.\r\n"
   "ATIndexBitmap.\r\n"
+  "ATResTTTextList.\r\n"
   "ATSimpleBitmap.\r\n"
   "ATTrueTypeText.\r\n"
   "ATTrueTypeVariable.\r\n"
+  "ATEllipse.\r\n"
   "ATQuad.\r\n";

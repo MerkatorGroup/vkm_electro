@@ -18,7 +18,13 @@
       "math.h": "c",
       "stdlib.h": "c",
       "j1939.h": "c",
-      "stdint.h": "c"
+      "stdint.h": "c",
+      "gstovisu.h": "c",
+      "m_j1939.h": "c",
+      "mr_mcm.h": "c",
+      "limits": "c",
+      "work_site.h": "c",
+      "gsmsgfifo.h": "c"
     }
   }
 }

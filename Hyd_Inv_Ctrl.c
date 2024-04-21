@@ -55,18 +55,23 @@ static void *Thread_HydrInv(void *arg) {
             parseInvert(tMsg);
             Inv_Hydr.Inv_OnLine =1;
         }
-
+static u8 t = 100;
         u32 nowInv_OverTerm = ((GetVar(HDL_INVERTER_OVER_TEMP_HYD) & 2) == 2);
         vechleicons_Set_stat(TERM_INV, (nowInv_OverTerm * 3));
         if (Inv_Hydr.OnOff == START) {
             EnInv = 1;
             Inv_Hydr.OnOff = ON_START;
+            t =100;
         } else if (Inv_Hydr.OnOff == ON_START) {
             if (GetVar(HDL_INVERTER_ON_HYD)) {
-                Inv_Hydr.TorqPercent = 90;
-                if (GetVar(HDL_INVERTER_TORQUE_HYD) > 85) {
+                Inv_Hydr.TorqPercent = 26;
+                if(t)t --;
+                else{
                     Inv_Hydr.OnOff = ON_WORK;
                 }
+                // if (GetVar(HDL_INVERTER_TORQUE_HYD) > 24) {
+
+                // }
             }
         } else if (Inv_Hydr.OnOff == STOP) {
                 Inv_Hydr.TorqPercent =0;
@@ -121,8 +126,8 @@ static void sendCmd_HydrInv(u8 En) {
 static void sendCmd_Hydr_Torque(u8 Percent) {
     static u8 prevPercnt =0;
     s8 step =0;
-    if(Percent > prevPercnt)step = 5;
-    else if(Percent < prevPercnt)step = -5;
+    if(Percent > prevPercnt)step = 1;
+    else if(Percent < prevPercnt)step = -1;
     prevPercnt += step;
 
     tCanMessage tx_msg;
@@ -136,6 +141,16 @@ static void sendCmd_Hydr_Torque(u8 Percent) {
     tx_msg.data.u32[1] = 0;
     CANSendMsg(&tx_msg);
 }
+
+
+void make_hyd_torq_vs_rpm(u32 reqRpm){
+    u32 now_rpm = GetVar(HDL_INVERTER_RPM_HYD);
+    s32 step = 0;
+    if(reqRpm > now_rpm)step = -1;
+    else if(reqRpm < now_rpm)step = 1;
+    Inv_Hydr.TorqPercent += step;
+}
+
 
 void Inv_Hydr_resetAll(void) {
     SetVar(HDL_INVERTER_ON_HYD, 0);

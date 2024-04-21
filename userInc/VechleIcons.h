@@ -20,10 +20,10 @@ int CreateVechleIconsThread(void);
 #define ICO_NUM_15 0
 #define ICO_NUM_16 1
 #define ICO_NUM_17 2
-#define ICO_NUM_18 80
-#define ICO_NUM_19 240
+#define ICO_NUM_18 9
+#define ICO_NUM_19 44
 #define ICO_NUM_20 366
-#define ICO_NUM_21 246
+#define ICO_NUM_21 325
 #define ICO_NUM_22 209
 #define ICO_NUM_23 82
 #define ICO_NUM_24 6
@@ -34,7 +34,11 @@ typedef enum {
     TERM_INV,
     READY_INV,
     READY_HYD_INV,
-    LOW_LVL_CRG=13
+    BOX_IS_UP=8,
+    BRAKE_PRESSURE = 9,
+    OIL_TERM = 10,
+    BRAKE_PEDAL = 11,
+    LOW_LVL_CRG = 13
 } eIco;
 
 typedef enum {

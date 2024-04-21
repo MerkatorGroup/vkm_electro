@@ -12,7 +12,7 @@
 
 tGsThread id_MAIN_Thread;
 
-void SwitchIgnition(u8 En);
+// void SwitchIgnition(u8 En);
 void *Thread_MAIN(void *arg);
 u8 check_Coolant_Level(void);
 void Start_Stop_routine(void);
@@ -20,7 +20,7 @@ void checkInvHydErr(void);
 void checkInvENG_Err(void);
 void checkInvEngVoltage(void);
 u8 fInvReady = 0;
-e_mode_op mode_operation;
+u8 mode_operation;
 eStat fErrInvHyd;
 eStat fErrInvEng;
 u8 startQue = IDLE;
@@ -54,7 +54,10 @@ void *Thread_MAIN(void *arg) {
     r = Ini_EngInv_Thread();
     r = Ini_HydrInv_Thread();
     r = Ini_AKB_Thread();
-    RelayPowerEn(ENABLE);
+    ini_work_eq();
+
+MR_SetDO_byName("key_pos_2" , 0 );  // сброс поддержки питания
+MR_MCM_SetPWMOut_by_Name("coolant_pump_spd" , 400, 500) ;
 
     while (1) {
         u8 fBatLowL = GetVar(HDL_BAT_LOW_LVL_CHRG);
@@ -74,7 +77,20 @@ void *Thread_MAIN(void *arg) {
         DashBoardCycle();
         checkInvEngVoltage();
         vechleicons_Set_stat(KEY_IGN, mode_operation == ON_WORK);
+        vechleicons_Set_stat(BRAKE_PRESSURE, GetVar(HDL_BRAKE_PRESSURE) == 1 ? 1:3);
+        vechleicons_Set_stat(BRAKE_PEDAL, GetVar(HDL_BRAKE_PEDAL));
+        vechleicons_Set_stat(TERM_INV, ( GetVar(HDL_COLANT_LOW) * 3));
+        vechleicons_Set_stat(OIL_TERM, ( GetVar(HDL_OVER_TERM_HYD ) * 3));
+        vechleicons_Set_stat(BOX_IS_UP, ( GetVar(HDL_BOX_IS_UP) * 3));
         vechleicons_show();
+
+        u32 trpm_eng = GetVar(HDL_INVERTER_RPM);
+float velosity = (float)trpm_eng/10.42 * 1.97708f;  // m\min
+velosity = velosity * 60.0f /100.0f; // km_h *10
+SetVar(HDL_TRANS_SPEED, (u32)velosity);
+
+
+       work_cycle(mode_operation);
 
         usleep(10000);  /// 10 ms
     }
@@ -152,7 +168,7 @@ u8 check_Coolant_Level(void) {
 }
 
 void Start_Stop_routine(void) {
-    startQue = IDLE;
+    startQue = 0;
     u8 key_pos = GetVar(HDL_KEY_POSITION);
     switch (mode_operation) {
         case IDLE:
@@ -173,14 +189,17 @@ void Start_Stop_routine(void) {
             startQue = 2;
             break;
         case WAIT:
-            if ((HVBattery.BatON_OFF_REQ == ON_WORK) &&
+            if (//(HVBattery.BatON_OFF_REQ == ON_WORK) &&
                 (Inv_Hydr.OnOff == ON_WORK) && (Inv_Engine.OnOff == ON_WORK)) {
                 mode_operation = ON_WORK;
-                SetDOut(6, 1);
+//   u8 dout =GetVar(HDL_POWERSUPLAYPIN);
+//                 SetDOut(dout, 1);
+MR_SetDO_byName("key_pos_2" , 1 );
             }
             startQue = 3;
             break;
         case ON_WORK:
+
             if (key_pos == 0) {
                 Inv_Hydr.OnOff = STOP;
                 Inv_Engine.OnOff = STOP;
@@ -197,7 +216,9 @@ void Start_Stop_routine(void) {
             break;
         case WAIT_STOP:
             if (HVBattery.BatON_OFF_REQ == IDLE) {
-                SetDOut(6, 0);
+//   u8 dout =GetVar(HDL_POWERSUPLAYPIN);
+//                 SetDOut(dout, 0);
+MR_SetDO_byName("key_pos_2" , 0 );
                 mode_operation = IDLE;
             }
             startQue = 1;
@@ -205,5 +226,17 @@ void Start_Stop_routine(void) {
         default:
             break;
     }
+
+//  static u8 tdbg = 100;
+//  static u8 v_dbg = 0;
+//  if (tdbg)
+//      tdbg--;
+//  else {
+//      v_dbg ^= 1;
+//      MR_SetDO_byName("key_pos_2", v_dbg);
+//      tdbg = 100;
+//  }
+
+SetVar(HDL_WORK_STAT,mode_operation );
     SetVar(HDL_QUESTART, startQue);
 }

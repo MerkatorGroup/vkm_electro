@@ -8,182 +8,286 @@
 #define _VARTAB_H_
 
 /* Variable Table */
-#define HDL_VOLTAGE_LEVEL 1            // Handle of Voltage_Level
-#define IDX_VOLTAGE_LEVEL 0            // Index
-#define HDL_IGNITION_IS_ON 2           // Handle of Ignition_Is_On
-#define IDX_IGNITION_IS_ON 1           // Index
-#define HDL_DISCH_PWR 3                // Handle of Disch_Pwr
-#define IDX_DISCH_PWR 2                // Index
-#define HDL_CURRENT 4                  // Handle of Current
-#define IDX_CURRENT 3                  // Index
-#define HDL_FASTUPDCHARG 5             // Handle of FastUpdCharg
-#define IDX_FASTUPDCHARG 4             // Index
-#define HDL_HI_CELL_VOLT 6             // Handle of Hi_Cell_Volt
-#define IDX_HI_CELL_VOLT 5             // Index
-#define HDL_LOW_CELL_VOLT 7            // Handle of Low_Cell_Volt
-#define IDX_LOW_CELL_VOLT 6            // Index
-#define HDL_DISCHARGE_CAP 8            // Handle of Discharge_Cap
-#define IDX_DISCHARGE_CAP 7            // Index
-#define HDL_AVDISPOW_LED_1 9           // Handle of AvDisPow_LED_1
-#define IDX_AVDISPOW_LED_1 8           // Index
-#define HDL_AVDISPOW_LED_2 10          // Handle of AvDisPow_LED_2
-#define IDX_AVDISPOW_LED_2 9           // Index
-#define HDL_AVDISPOW_LED_3 11          // Handle of AvDisPow_LED_3
-#define IDX_AVDISPOW_LED_3 10          // Index
-#define HDL_AVDISPOW_LED_4 12          // Handle of AvDisPow_LED_4
-#define IDX_AVDISPOW_LED_4 11          // Index
-#define HDL_AVDISPOW_LED_5 13          // Handle of AvDisPow_LED_5
-#define IDX_AVDISPOW_LED_5 12          // Index
-#define HDL_AVDISPOW_LED_6 14          // Handle of AvDisPow_LED_6
-#define IDX_AVDISPOW_LED_6 13          // Index
-#define HDL_AVDISPOW_LED_7 15          // Handle of AvDisPow_LED_7
-#define IDX_AVDISPOW_LED_7 14          // Index
-#define HDL_PORTA_0 16                 // Handle of portA_0, Created by copy/paste object
-#define IDX_PORTA_0 15                 // Index
-#define HDL_DUTY_5P 17                 // Handle of Duty_5p
-#define IDX_DUTY_5P 16                 // Index
-#define HDL_BAT_DISCHARG_BAR 18        // Handle of BAT_DISCHARG_BAR, Created by copy/paste object
-#define IDX_BAT_DISCHARG_BAR 17        // Index
-#define HDL_ICOINDX_10 19              // Handle of IcoIndx_10, Created by copy/paste object
-#define IDX_ICOINDX_10 18              // Index
-#define HDL_ICOINDX_24 20              // Handle of IcoIndx_24, Created by copy/paste object
-#define IDX_ICOINDX_24 19              // Index
-#define HDL_ICOINDX_12 21              // Handle of IcoIndx_12, Created by copy/paste object
-#define IDX_ICOINDX_12 20              // Index
-#define HDL_ICOINDX_13 22              // Handle of IcoIndx_13, Created by copy/paste object
-#define IDX_ICOINDX_13 21              // Index
-#define HDL_ICOINDX_14 23              // Handle of IcoIndx_14, Created by copy/paste object
-#define IDX_ICOINDX_14 22              // Index
-#define HDL_ICOINDX_15 24              // Handle of IcoIndx_15, Created by copy/paste object
-#define IDX_ICOINDX_15 23              // Index
-#define HDL_ICOINDX_16 25              // Handle of IcoIndx_16, Created by copy/paste object
-#define IDX_ICOINDX_16 24              // Index
-#define HDL_ICOINDX_17 26              // Handle of IcoIndx_17, Created by copy/paste object
-#define IDX_ICOINDX_17 25              // Index
-#define HDL_ICOINDX_18 27              // Handle of IcoIndx_18, Created by copy/paste object
-#define IDX_ICOINDX_18 26              // Index
-#define HDL_ICOINDX_19 28              // Handle of IcoIndx_19, Created by copy/paste object
-#define IDX_ICOINDX_19 27              // Index
-#define HDL_ICOINDX_20 29              // Handle of IcoIndx_20, Created by copy/paste object
-#define IDX_ICOINDX_20 28              // Index
-#define HDL_ICOINDX_21 30              // Handle of IcoIndx_21, Created by copy/paste object
-#define IDX_ICOINDX_21 29              // Index
-#define HDL_ICOINDX_22 31              // Handle of IcoIndx_22, Created by copy/paste object
-#define IDX_ICOINDX_22 30              // Index
-#define HDL_ICOINDX_23 32              // Handle of IcoIndx_23, Created by copy/paste object
-#define IDX_ICOINDX_23 31              // Index
-#define HDL_ICOINDX_11 33              // Handle of IcoIndx_11
-#define IDX_ICOINDX_11 32              // Index
-#define HDL_TRANS_SPEED 34             // Handle of Trans_Speed, Created by copy/paste object
-#define IDX_TRANS_SPEED 33             // Index
-#define HDL_TRANS_RPM 35               // Handle of Trans_Rpm, Created by copy/paste object
-#define IDX_TRANS_RPM 34               // Index
-#define HDL_TRANS_PRESS 36             // Handle of Trans_Press, Created by copy/paste object
-#define IDX_TRANS_PRESS 35             // Index
-#define HDL_REMAIN_CHARGE 37           // Handle of REMAIN_CHARGE, Created by copy/paste object
-#define IDX_REMAIN_CHARGE 36           // Index
-#define HDL_INVERTER_ON 38             // Handle of INVERTER_ON
-#define IDX_INVERTER_ON 37             // Index
-#define HDL_INVERTER_ERROR 39          // Handle of INVERTER_ERROR
-#define IDX_INVERTER_ERROR 38          // Index
-#define HDL_INVERTER_WARN 40           // Handle of INVERTER_WARN
-#define IDX_INVERTER_WARN 39           // Index
-#define HDL_INVERTER_OVER_TEMP 41      // Handle of INVERTER_OVER_TEMP
-#define IDX_INVERTER_OVER_TEMP 40      // Index
-#define HDL_INVERTER_TORQUE 42         // Handle of INVERTER_TORQUE, Реализованный момент вращения
-#define IDX_INVERTER_TORQUE 41         // Index
-#define HDL_INVERTER_RPM 43            // Handle of INVERTER_RPM, Текущая частота вращения
-#define IDX_INVERTER_RPM 42            // Index
-#define HDL_INVERTER_CURRENT 44        // Handle of INVERTER_CURRENT, Ток статора
-#define IDX_INVERTER_CURRENT 43        // Index
-#define HDL_INVERTER_POWER 45          // Handle of INVERTER_POWER, Мощность, знаковая,
-#define IDX_INVERTER_POWER 44          // Index
-#define HDL_INVERTER_VOLTAGE 46        // Handle of INVERTER_VOLTAGE, Напряжение ЗПТ,
-#define IDX_INVERTER_VOLTAGE 45        // Index
-#define HDL_BAT_LOW_VOLTAGE 47         // Handle of BAT_LOW_VOLTAGE
-#define IDX_BAT_LOW_VOLTAGE 46         // Index
-#define HDL_INV_LOW_LEVEL 48           // Handle of INV_LOW_LEVEL
-#define IDX_INV_LOW_LEVEL 47           // Index
-#define HDL_INV_READY 49               // Handle of INV_READY
-#define IDX_INV_READY 48               // Index
-#define HDL_AKB_AVLBL 50               // Handle of AKB_AVLBL
-#define IDX_AKB_AVLBL 49               // Index
-#define HDL_INV_VOLT_BAR 51            // Handle of INV_VOLT_BAR
-#define IDX_INV_VOLT_BAR 50            // Index
-#define HDL_INV_CURRENT_BAR 52         // Handle of INV_CURRENT_BAR
-#define IDX_INV_CURRENT_BAR 51         // Index
-#define HDL_BAT_CURRENT_BAR 53         // Handle of BAT_CURRENT_BAR
-#define IDX_BAT_CURRENT_BAR 52         // Index
-#define HDL_TXTATRTOPBOT 54            // Handle of txtAtrTopBot
-#define IDX_TXTATRTOPBOT 53            // Index
-#define HDL_BAT_LOW_LVL_CHRG 55        // Handle of BAT_LOW_LVL_CHRG
-#define IDX_BAT_LOW_LVL_CHRG 54        // Index
-#define HDL_RPM_ARROW 56               // Handle of RPM_ARROW
-#define IDX_RPM_ARROW 55               // Index
-#define HDL_DIST_BAT 57                // Handle of DIST_BAT
-#define IDX_DIST_BAT 56                // Index
-#define HDL_COOLANT_LOW_LVL 58         // Handle of COOLANT_LOW_LVL
-#define IDX_COOLANT_LOW_LVL 57         // Index
-#define HDL_TURBO_CURR_BAR 59          // Handle of TURBO_CURR_BAR
-#define IDX_TURBO_CURR_BAR 58          // Index
-#define HDL_INVERTER_ON_HYD 60         // Handle of INVERTER_ON_HYD
-#define IDX_INVERTER_ON_HYD 59         // Index
-#define HDL_INVERTER_ERROR_HYD 61      // Handle of INVERTER_ERROR_HYD
-#define IDX_INVERTER_ERROR_HYD 60      // Index
-#define HDL_INVERTER_WARN_HYD 62       // Handle of INVERTER_WARN_HYD
-#define IDX_INVERTER_WARN_HYD 61       // Index
-#define HDL_INVERTER_OVER_TEMP_HYD 63  // Handle of INVERTER_OVER_TEMP_HYD
-#define IDX_INVERTER_OVER_TEMP_HYD 62  // Index
-#define HDL_INVERTER_TORQUE_HYD 64     // Handle of INVERTER_TORQUE_HYD
-#define IDX_INVERTER_TORQUE_HYD 63     // Index
-#define HDL_INVERTER_RPM_HYD 65        // Handle of INVERTER_RPM_HYD
-#define IDX_INVERTER_RPM_HYD 64        // Index
-#define HDL_INVERTER_CURRENT_HYD 66    // Handle of INVERTER_CURRENT_HYD
-#define IDX_INVERTER_CURRENT_HYD 65    // Index
-#define HDL_INVERTER_POWER_HYD 67      // Handle of INVERTER_POWER_HYD
-#define IDX_INVERTER_POWER_HYD 66      // Index
-#define HDL_INVERTER_VOLTAGE_HYD 68    // Handle of INVERTER_VOLTAGE_HYD
-#define IDX_INVERTER_VOLTAGE_HYD 67    // Index
-#define HDL_INV_READY_HYD 69           // Handle of INV_READY_HYD
-#define IDX_INV_READY_HYD 68           // Index
-#define HDL_INV_LOW_LEVEL_HYD 70       // Handle of INV_LOW_LEVEL_HYD
-#define IDX_INV_LOW_LEVEL_HYD 69       // Index
-#define HDL_INV_CURRENT_BAR_HYD 71     // Handle of INV_CURRENT_BAR_HYD
-#define IDX_INV_CURRENT_BAR_HYD 70     // Index
-#define HDL_KEY_POSITION 72            // Handle of KEY_POSITION, ключ зажигания позиция
-#define IDX_KEY_POSITION 71            // Index
-#define HDL_SOC_BAT 73                 // Handle of SOC_BAT
-#define IDX_SOC_BAT 72                 // Index
-#define HDL_QUESTART 74                // Handle of QueStart
-#define IDX_QUESTART 73                // Index
-#define HDL_INV_LED_E_ENG 75           // Handle of INV_LED_E_ENG
-#define IDX_INV_LED_E_ENG 74           // Index
-#define HDL_INV_LED_W_ENG 76           // Handle of INV_LED_W_ENG
-#define IDX_INV_LED_W_ENG 75           // Index
-#define HDL_INV_LED_T_ENG 77           // Handle of INV_LED_T_ENG
-#define IDX_INV_LED_T_ENG 76           // Index
-#define HDL_INV_LED_E_HYD 78           // Handle of INV_LED_E_HYD
-#define IDX_INV_LED_E_HYD 77           // Index
-#define HDL_INV_LED_W_HYD 79           // Handle of INV_LED_W_HYD
-#define IDX_INV_LED_W_HYD 78           // Index
-#define HDL_INV_LED_T_HYD 80           // Handle of INV_LED_T_HYD
-#define IDX_INV_LED_T_HYD 79           // Index
-#define HDL_SYS_U_SUPPLY 65524         // Handle of SYS_U_SUPPLY
-#define IDX_SYS_U_SUPPLY 80            // Index
-#define HDL_SYS_ENC_RIGHT 65525        // Handle of SYS_ENC_RIGHT
-#define IDX_SYS_ENC_RIGHT 81           // Index
-#define HDL_SYS_ENC_LEFT 65526         // Handle of SYS_ENC_LEFT
-#define IDX_SYS_ENC_LEFT 82            // Index
-#define HDL_SYS_TEMPERATURE 65527      // Handle of SYS_TEMPERATURE
-#define IDX_SYS_TEMPERATURE 83         // Index
-#define HDL_SYS_PRIORITY 65528         // Handle of SYS_PRIORITY
-#define IDX_SYS_PRIORITY 84            // Index
-#define HDL_SYS_COLOR 65529            // Handle of SYS_COLOR
-#define IDX_SYS_COLOR 85               // Index
-#define HDL_SYS_LANGUAGE 65530         // Handle of SYS_LANGUAGE
-#define IDX_SYS_LANGUAGE 86            // Index
-#define HDL_SYS_OPERATING_TIME 65531   // Handle of SYS_OPERATING_TIME
-#define IDX_SYS_OPERATING_TIME 87      // Index
+#define HDL_VOLTAGE_LEVEL 1                      // Handle of Voltage_Level
+#define IDX_VOLTAGE_LEVEL 0                      // Index
+#define HDL_IGNITION_IS_ON 2                     // Handle of Ignition_Is_On
+#define IDX_IGNITION_IS_ON 1                     // Index
+#define HDL_DISCH_PWR 3                          // Handle of Disch_Pwr
+#define IDX_DISCH_PWR 2                          // Index
+#define HDL_CURRENT 4                            // Handle of Current
+#define IDX_CURRENT 3                            // Index
+#define HDL_FASTUPDCHARG 5                       // Handle of FastUpdCharg
+#define IDX_FASTUPDCHARG 4                       // Index
+#define HDL_HI_CELL_VOLT 6                       // Handle of Hi_Cell_Volt
+#define IDX_HI_CELL_VOLT 5                       // Index
+#define HDL_LOW_CELL_VOLT 7                      // Handle of Low_Cell_Volt
+#define IDX_LOW_CELL_VOLT 6                      // Index
+#define HDL_DISCHARGE_CAP 8                      // Handle of Discharge_Cap
+#define IDX_DISCHARGE_CAP 7                      // Index
+#define HDL_AVDISPOW_LED_1 9                     // Handle of AvDisPow_LED_1
+#define IDX_AVDISPOW_LED_1 8                     // Index
+#define HDL_AVDISPOW_LED_2 10                    // Handle of AvDisPow_LED_2
+#define IDX_AVDISPOW_LED_2 9                     // Index
+#define HDL_AVDISPOW_LED_3 11                    // Handle of AvDisPow_LED_3
+#define IDX_AVDISPOW_LED_3 10                    // Index
+#define HDL_AVDISPOW_LED_4 12                    // Handle of AvDisPow_LED_4
+#define IDX_AVDISPOW_LED_4 11                    // Index
+#define HDL_AVDISPOW_LED_5 13                    // Handle of AvDisPow_LED_5
+#define IDX_AVDISPOW_LED_5 12                    // Index
+#define HDL_AVDISPOW_LED_6 14                    // Handle of AvDisPow_LED_6
+#define IDX_AVDISPOW_LED_6 13                    // Index
+#define HDL_AVDISPOW_LED_7 15                    // Handle of AvDisPow_LED_7
+#define IDX_AVDISPOW_LED_7 14                    // Index
+#define HDL_PORTA_0 16                           // Handle of portA_0, Created by copy/paste object
+#define IDX_PORTA_0 15                           // Index
+#define HDL_DUTY_5P 17                           // Handle of Duty_5p
+#define IDX_DUTY_5P 16                           // Index
+#define HDL_BAT_DISCHARG_BAR 18                  // Handle of BAT_DISCHARG_BAR, Created by copy/paste object
+#define IDX_BAT_DISCHARG_BAR 17                  // Index
+#define HDL_ICOINDX_10 19                        // Handle of IcoIndx_10, Created by copy/paste object
+#define IDX_ICOINDX_10 18                        // Index
+#define HDL_ICOINDX_24 20                        // Handle of IcoIndx_24, Created by copy/paste object
+#define IDX_ICOINDX_24 19                        // Index
+#define HDL_ICOINDX_12 21                        // Handle of IcoIndx_12, Created by copy/paste object
+#define IDX_ICOINDX_12 20                        // Index
+#define HDL_ICOINDX_13 22                        // Handle of IcoIndx_13, Created by copy/paste object
+#define IDX_ICOINDX_13 21                        // Index
+#define HDL_ICOINDX_14 23                        // Handle of IcoIndx_14, Created by copy/paste object
+#define IDX_ICOINDX_14 22                        // Index
+#define HDL_ICOINDX_15 24                        // Handle of IcoIndx_15, Created by copy/paste object
+#define IDX_ICOINDX_15 23                        // Index
+#define HDL_ICOINDX_16 25                        // Handle of IcoIndx_16, Created by copy/paste object
+#define IDX_ICOINDX_16 24                        // Index
+#define HDL_ICOINDX_17 26                        // Handle of IcoIndx_17, Created by copy/paste object
+#define IDX_ICOINDX_17 25                        // Index
+#define HDL_ICOINDX_18 27                        // Handle of IcoIndx_18, Created by copy/paste object
+#define IDX_ICOINDX_18 26                        // Index
+#define HDL_ICOINDX_19 28                        // Handle of IcoIndx_19, Created by copy/paste object
+#define IDX_ICOINDX_19 27                        // Index
+#define HDL_ICOINDX_20 29                        // Handle of IcoIndx_20, Created by copy/paste object
+#define IDX_ICOINDX_20 28                        // Index
+#define HDL_ICOINDX_21 30                        // Handle of IcoIndx_21, Created by copy/paste object
+#define IDX_ICOINDX_21 29                        // Index
+#define HDL_ICOINDX_22 31                        // Handle of IcoIndx_22, Created by copy/paste object
+#define IDX_ICOINDX_22 30                        // Index
+#define HDL_ICOINDX_23 32                        // Handle of IcoIndx_23, Created by copy/paste object
+#define IDX_ICOINDX_23 31                        // Index
+#define HDL_ICOINDX_11 33                        // Handle of IcoIndx_11
+#define IDX_ICOINDX_11 32                        // Index
+#define HDL_TRANS_SPEED 34                       // Handle of Trans_Speed, Created by copy/paste object
+#define IDX_TRANS_SPEED 33                       // Index
+#define HDL_TRANS_RPM 35                         // Handle of Trans_Rpm, Created by copy/paste object
+#define IDX_TRANS_RPM 34                         // Index
+#define HDL_TRANS_PRESS 36                       // Handle of Trans_Press, Created by copy/paste object
+#define IDX_TRANS_PRESS 35                       // Index
+#define HDL_REMAIN_CHARGE 37                     // Handle of REMAIN_CHARGE, Created by copy/paste object
+#define IDX_REMAIN_CHARGE 36                     // Index
+#define HDL_INVERTER_ON 38                       // Handle of INVERTER_ON
+#define IDX_INVERTER_ON 37                       // Index
+#define HDL_INVERTER_ERROR 39                    // Handle of INVERTER_ERROR
+#define IDX_INVERTER_ERROR 38                    // Index
+#define HDL_INVERTER_WARN 40                     // Handle of INVERTER_WARN
+#define IDX_INVERTER_WARN 39                     // Index
+#define HDL_INVERTER_OVER_TEMP 41                // Handle of INVERTER_OVER_TEMP
+#define IDX_INVERTER_OVER_TEMP 40                // Index
+#define HDL_INVERTER_TORQUE 42                   // Handle of INVERTER_TORQUE, Реализованный момент вращения
+#define IDX_INVERTER_TORQUE 41                   // Index
+#define HDL_INVERTER_RPM 43                      // Handle of INVERTER_RPM, Текущая частота вращения
+#define IDX_INVERTER_RPM 42                      // Index
+#define HDL_INVERTER_CURRENT 44                  // Handle of INVERTER_CURRENT, Ток статора
+#define IDX_INVERTER_CURRENT 43                  // Index
+#define HDL_INVERTER_POWER 45                    // Handle of INVERTER_POWER, Мощность, знаковая,
+#define IDX_INVERTER_POWER 44                    // Index
+#define HDL_INVERTER_VOLTAGE 46                  // Handle of INVERTER_VOLTAGE, Напряжение ЗПТ,
+#define IDX_INVERTER_VOLTAGE 45                  // Index
+#define HDL_BAT_LOW_VOLTAGE 47                   // Handle of BAT_LOW_VOLTAGE
+#define IDX_BAT_LOW_VOLTAGE 46                   // Index
+#define HDL_INV_LOW_LEVEL 48                     // Handle of INV_LOW_LEVEL
+#define IDX_INV_LOW_LEVEL 47                     // Index
+#define HDL_INV_READY 49                         // Handle of INV_READY
+#define IDX_INV_READY 48                         // Index
+#define HDL_AKB_AVLBL 50                         // Handle of AKB_AVLBL
+#define IDX_AKB_AVLBL 49                         // Index
+#define HDL_INV_VOLT_BAR 51                      // Handle of INV_VOLT_BAR
+#define IDX_INV_VOLT_BAR 50                      // Index
+#define HDL_INV_CURRENT_BAR 52                   // Handle of INV_CURRENT_BAR
+#define IDX_INV_CURRENT_BAR 51                   // Index
+#define HDL_BAT_CURRENT_BAR 53                   // Handle of BAT_CURRENT_BAR
+#define IDX_BAT_CURRENT_BAR 52                   // Index
+#define HDL_TXTATRTOPBOT 54                      // Handle of txtAtrTopBot
+#define IDX_TXTATRTOPBOT 53                      // Index
+#define HDL_BAT_LOW_LVL_CHRG 55                  // Handle of BAT_LOW_LVL_CHRG
+#define IDX_BAT_LOW_LVL_CHRG 54                  // Index
+#define HDL_RPM_ARROW 56                         // Handle of RPM_ARROW
+#define IDX_RPM_ARROW 55                         // Index
+#define HDL_DIST_BAT 57                          // Handle of DIST_BAT
+#define IDX_DIST_BAT 56                          // Index
+#define HDL_COOLANT_LOW_LVL 58                   // Handle of COOLANT_LOW_LVL
+#define IDX_COOLANT_LOW_LVL 57                   // Index
+#define HDL_TURBO_CURR_BAR 59                    // Handle of TURBO_CURR_BAR
+#define IDX_TURBO_CURR_BAR 58                    // Index
+#define HDL_INVERTER_ON_HYD 60                   // Handle of INVERTER_ON_HYD
+#define IDX_INVERTER_ON_HYD 59                   // Index
+#define HDL_INVERTER_ERROR_HYD 61                // Handle of INVERTER_ERROR_HYD
+#define IDX_INVERTER_ERROR_HYD 60                // Index
+#define HDL_INVERTER_WARN_HYD 62                 // Handle of INVERTER_WARN_HYD
+#define IDX_INVERTER_WARN_HYD 61                 // Index
+#define HDL_INVERTER_OVER_TEMP_HYD 63            // Handle of INVERTER_OVER_TEMP_HYD
+#define IDX_INVERTER_OVER_TEMP_HYD 62            // Index
+#define HDL_INVERTER_TORQUE_HYD 64               // Handle of INVERTER_TORQUE_HYD
+#define IDX_INVERTER_TORQUE_HYD 63               // Index
+#define HDL_INVERTER_RPM_HYD 65                  // Handle of INVERTER_RPM_HYD
+#define IDX_INVERTER_RPM_HYD 64                  // Index
+#define HDL_INVERTER_CURRENT_HYD 66              // Handle of INVERTER_CURRENT_HYD
+#define IDX_INVERTER_CURRENT_HYD 65              // Index
+#define HDL_INVERTER_POWER_HYD 67                // Handle of INVERTER_POWER_HYD
+#define IDX_INVERTER_POWER_HYD 66                // Index
+#define HDL_INVERTER_VOLTAGE_HYD 68              // Handle of INVERTER_VOLTAGE_HYD
+#define IDX_INVERTER_VOLTAGE_HYD 67              // Index
+#define HDL_INV_READY_HYD 69                     // Handle of INV_READY_HYD
+#define IDX_INV_READY_HYD 68                     // Index
+#define HDL_INV_LOW_LEVEL_HYD 70                 // Handle of INV_LOW_LEVEL_HYD
+#define IDX_INV_LOW_LEVEL_HYD 69                 // Index
+#define HDL_INV_CURRENT_BAR_HYD 71               // Handle of INV_CURRENT_BAR_HYD
+#define IDX_INV_CURRENT_BAR_HYD 70               // Index
+#define HDL_KEY_POSITION 72                      // Handle of KEY_POSITION, ключ зажигания позиция
+#define IDX_KEY_POSITION 71                      // Index
+#define HDL_SOC_BAT 73                           // Handle of SOC_BAT
+#define IDX_SOC_BAT 72                           // Index
+#define HDL_QUESTART 74                          // Handle of QueStart
+#define IDX_QUESTART 73                          // Index
+#define HDL_INV_LED_E_ENG 75                     // Handle of INV_LED_E_ENG
+#define IDX_INV_LED_E_ENG 74                     // Index
+#define HDL_INV_LED_W_ENG 76                     // Handle of INV_LED_W_ENG
+#define IDX_INV_LED_W_ENG 75                     // Index
+#define HDL_INV_LED_T_ENG 77                     // Handle of INV_LED_T_ENG
+#define IDX_INV_LED_T_ENG 76                     // Index
+#define HDL_INV_LED_E_HYD 78                     // Handle of INV_LED_E_HYD
+#define IDX_INV_LED_E_HYD 77                     // Index
+#define HDL_INV_LED_W_HYD 79                     // Handle of INV_LED_W_HYD
+#define IDX_INV_LED_W_HYD 78                     // Index
+#define HDL_INV_LED_T_HYD 80                     // Handle of INV_LED_T_HYD
+#define IDX_INV_LED_T_HYD 79                     // Index
+#define HDL_DIG_OUT_0 81                         // Handle of DIG_OUT_0
+#define IDX_DIG_OUT_0 80                         // Index
+#define HDL_PROFILEICON_1 82                     // Handle of ProfileIcon_1, Created by copy/paste object
+#define IDX_PROFILEICON_1 81                     // Index
+#define HDL_BRUSHESANIMATION 83                  // Handle of BrushesAnimation, Created by copy/paste object
+#define IDX_BRUSHESANIMATION 82                  // Index
+#define HDL_BRUSH_SPEED_VAR 84                   // Handle of brush_speed_var, Created by copy/paste object
+#define IDX_BRUSH_SPEED_VAR 83                   // Index
+#define HDL_BODY_DOWN_VAR 85                     // Handle of body_down_var, Created by copy/paste object
+#define IDX_BODY_DOWN_VAR 84                     // Index
+#define HDL_BODY_UP_VAR 86                       // Handle of body_up_var, Created by copy/paste object
+#define IDX_BODY_UP_VAR 85                       // Index
+#define HDL_CAP_DOWN_VAR 87                      // Handle of cap_down_var, Created by copy/paste object
+#define IDX_CAP_DOWN_VAR 86                      // Index
+#define HDL_CAP_UP_VAR 88                        // Handle of cap_up_var, Created by copy/paste object
+#define IDX_CAP_UP_VAR 87                        // Index
+#define HDL_Y11STATE_VAR 89                      // Handle of Y11State_Var, Created by copy/paste object
+#define IDX_Y11STATE_VAR 88                      // Index
+#define HDL_Y3STATE_VAR 90                       // Handle of Y3State_Var, Created by copy/paste object
+#define IDX_Y3STATE_VAR 89                       // Index
+#define HDL_VACUUM_ACTIVE_VAR 91                 // Handle of vacuum_active_var, Created by copy/paste object
+#define IDX_VACUUM_ACTIVE_VAR 90                 // Index
+#define HDL_VACUUM_SPEED_VAR 92                  // Handle of vacuum_speed_var, Created by copy/paste object
+#define IDX_VACUUM_SPEED_VAR 91                  // Index
+#define HDL_AUTOMODE_VAR 93                      // Handle of AutoMode_Var, Created by copy/paste object
+#define IDX_AUTOMODE_VAR 92                      // Index
+#define HDL_PAUSEMODE_VAR 94                     // Handle of PauseMode_Var, Created by copy/paste object
+#define IDX_PAUSEMODE_VAR 93                     // Index
+#define HDL_WORKINGMODE_VAR 95                   // Handle of WorkingMode_var, Created by copy/paste object
+#define IDX_WORKINGMODE_VAR 94                   // Index
+#define HDL_VKM_FUELLEVEL_VAR 96                 // Handle of VKM_FuelLevel_Var, Created by copy/paste object
+#define IDX_VKM_FUELLEVEL_VAR 95                 // Index
+#define HDL_MCMVOLTAGE_VISU_VAR 97               // Handle of MCMVoltage_Visu_Var, Created by copy/paste object
+#define IDX_MCMVOLTAGE_VISU_VAR 96               // Index
+#define HDL_VKM_VISU_FUELLEVEL_VAR 98            // Handle of VKM_Visu_FuelLevel_Var, Created by copy/paste object
+#define IDX_VKM_VISU_FUELLEVEL_VAR 97            // Index
+#define HDL_BRUSH_ACTIVE_VAR 99                  // Handle of brush_active_var, Created by copy/paste object
+#define IDX_BRUSH_ACTIVE_VAR 98                  // Index
+#define HDL_VACUUM_DOWN_VAR 100                  // Handle of vacuum_down_var, Created by copy/paste object
+#define IDX_VACUUM_DOWN_VAR 99                   // Index
+#define HDL_VACUUM_UP_VAR 101                    // Handle of vacuum_up_var, Created by copy/paste object
+#define IDX_VACUUM_UP_VAR 100                    // Index
+#define HDL_PROFILEICON_2 102                    // Handle of ProfileIcon_2, Created by copy/paste object
+#define IDX_PROFILEICON_2 101                    // Index
+#define HDL_PROFILEICON_3 103                    // Handle of ProfileIcon_3, Created by copy/paste object
+#define IDX_PROFILEICON_3 102                    // Index
+#define HDL_PROFILEICON_6 104                    // Handle of ProfileIcon_6, Created by copy/paste object
+#define IDX_PROFILEICON_6 103                    // Index
+#define HDL_PROFILEICON_5 105                    // Handle of ProfileIcon_5, Created by copy/paste object
+#define IDX_PROFILEICON_5 104                    // Index
+#define HDL_PROFILEICON_4 106                    // Handle of ProfileIcon_4, Created by copy/paste object
+#define IDX_PROFILEICON_4 105                    // Index
+#define HDL_PROFILEICON_9 107                    // Handle of ProfileIcon_9, Created by copy/paste object
+#define IDX_PROFILEICON_9 106                    // Index
+#define HDL_PROFILEICON_8 108                    // Handle of ProfileIcon_8, Created by copy/paste object
+#define IDX_PROFILEICON_8 107                    // Index
+#define HDL_PROFILEICON_7 109                    // Handle of ProfileIcon_7, Created by copy/paste object
+#define IDX_PROFILEICON_7 108                    // Index
+#define HDL_PARK_PRESSURE 110                    // Handle of PARK_PRESSURE
+#define IDX_PARK_PRESSURE 109                    // Index
+#define HDL_VKM_SPEED_KMH_VISU_VAR 111           // Handle of VKM_Speed_KMH_Visu_Var, Created by copy/paste object
+#define IDX_VKM_SPEED_KMH_VISU_VAR 110           // Index
+#define HDL_MENUVKM 112                          // Handle of MenuVKM, Created by copy/paste object
+#define IDX_MENUVKM 111                          // Index
+#define HDL_BUNKERANIMATION 113                  // Handle of BunkerAnimation, Created by copy/paste object
+#define IDX_BUNKERANIMATION 112                  // Index
+#define HDL_CAPANIMATION 114                     // Handle of CapAnimation, Created by copy/paste object
+#define IDX_CAPANIMATION 113                     // Index
+#define HDL_VKM_MOVEMENT_PEDALSTATE_FREE 115     // Handle of VKM_Movement_PedalState_Free, Created by copy/paste object
+#define IDX_VKM_MOVEMENT_PEDALSTATE_FREE 114     // Index
+#define HDL_VKM_MOVEMENT_PEDALSTATE_PRESSED 116  // Handle of VKM_Movement_PedalState_Pressed, Created by copy/paste object
+#define IDX_VKM_MOVEMENT_PEDALSTATE_PRESSED 115  // Index
+#define HDL_DIG_OUT_1 117                        // Handle of DIG_OUT_1
+#define IDX_DIG_OUT_1 116                        // Index
+#define HDL_DIG_OUT_3 118                        // Handle of DIG_OUT_3
+#define IDX_DIG_OUT_3 117                        // Index
+#define HDL_DIG_OUT_2 119                        // Handle of DIG_OUT_2
+#define IDX_DIG_OUT_2 118                        // Index
+#define HDL_WORK_STAT 120                        // Handle of work_stat
+#define IDX_WORK_STAT 119                        // Index
+#define HDL_ON_WETTING 121                       // Handle of ON_WETTING
+#define IDX_ON_WETTING 120                       // Index
+#define HDL_BRAKE_PRESSURE 122                   // Handle of BRAKE_PRESSURE
+#define IDX_BRAKE_PRESSURE 121                   // Index
+#define HDL_BRAKE_PEDAL 123                      // Handle of BRAKE_PEDAL
+#define IDX_BRAKE_PEDAL 122                      // Index
+#define HDL_MAIN_BR_ACTIVE 124                   // Handle of main_br_active
+#define IDX_MAIN_BR_ACTIVE 123                   // Index
+#define HDL_MAIN_BRSH_SPEED 125                  // Handle of main_brsh_speed
+#define IDX_MAIN_BRSH_SPEED 124                  // Index
+#define HDL_MAIN_BR_ANIM 126                     // Handle of main_br_anim
+#define IDX_MAIN_BR_ANIM 125                     // Index
+#define HDL_BOX_IS_UP 127                        // Handle of Box_IS_UP
+#define IDX_BOX_IS_UP 126                        // Index
+#define HDL_COLANT_LOW 128                       // Handle of COLANT_LOW
+#define IDX_COLANT_LOW 127                       // Index
+#define HDL_TURTLE 129                           // Handle of TURTLE
+#define IDX_TURTLE 128                           // Index
+#define HDL_LOW_LEV_HYD 130                      // Handle of LOW_LEV_HYD
+#define IDX_LOW_LEV_HYD 129                      // Index
+#define HDL_OVER_TERM_HYD 131                    // Handle of OVER_TERM_HYD
+#define IDX_OVER_TERM_HYD 130                    // Index
+#define HDL_RAMP_OPEN 132                        // Handle of RAMP_OPEN
+#define IDX_RAMP_OPEN 131                        // Index
+#define HDL_SYS_U_SUPPLY 65524                   // Handle of SYS_U_SUPPLY
+#define IDX_SYS_U_SUPPLY 132                     // Index
+#define HDL_SYS_ENC_RIGHT 65525                  // Handle of SYS_ENC_RIGHT
+#define IDX_SYS_ENC_RIGHT 133                    // Index
+#define HDL_SYS_ENC_LEFT 65526                   // Handle of SYS_ENC_LEFT
+#define IDX_SYS_ENC_LEFT 134                     // Index
+#define HDL_SYS_TEMPERATURE 65527                // Handle of SYS_TEMPERATURE
+#define IDX_SYS_TEMPERATURE 135                  // Index
+#define HDL_SYS_PRIORITY 65528                   // Handle of SYS_PRIORITY
+#define IDX_SYS_PRIORITY 136                     // Index
+#define HDL_SYS_COLOR 65529                      // Handle of SYS_COLOR
+#define IDX_SYS_COLOR 137                        // Index
+#define HDL_SYS_LANGUAGE 65530                   // Handle of SYS_LANGUAGE
+#define IDX_SYS_LANGUAGE 138                     // Index
+#define HDL_SYS_OPERATING_TIME 65531             // Handle of SYS_OPERATING_TIME
+#define IDX_SYS_OPERATING_TIME 139               // Index
 
 /* Variable Groups */
 #define GROUP_BAT 1      // Handle of BAT
@@ -193,182 +297,286 @@
 
 /* Variable Table (old style) */
 #ifdef USE_OLDSTYLE_VARIABLE_SYMBOLS
-#define Voltage_Level 1                // Handle of Voltage_Level
-#define Voltage_Level_idx 0            // Index
-#define Ignition_Is_On 2               // Handle of Ignition_Is_On
-#define Ignition_Is_On_idx 1           // Index
-#define Disch_Pwr 3                    // Handle of Disch_Pwr
-#define Disch_Pwr_idx 2                // Index
-#define Current 4                      // Handle of Current
-#define Current_idx 3                  // Index
-#define FastUpdCharg 5                 // Handle of FastUpdCharg
-#define FastUpdCharg_idx 4             // Index
-#define Hi_Cell_Volt 6                 // Handle of Hi_Cell_Volt
-#define Hi_Cell_Volt_idx 5             // Index
-#define Low_Cell_Volt 7                // Handle of Low_Cell_Volt
-#define Low_Cell_Volt_idx 6            // Index
-#define Discharge_Cap 8                // Handle of Discharge_Cap
-#define Discharge_Cap_idx 7            // Index
-#define AvDisPow_LED_1 9               // Handle of AvDisPow_LED_1
-#define AvDisPow_LED_1_idx 8           // Index
-#define AvDisPow_LED_2 10              // Handle of AvDisPow_LED_2
-#define AvDisPow_LED_2_idx 9           // Index
-#define AvDisPow_LED_3 11              // Handle of AvDisPow_LED_3
-#define AvDisPow_LED_3_idx 10          // Index
-#define AvDisPow_LED_4 12              // Handle of AvDisPow_LED_4
-#define AvDisPow_LED_4_idx 11          // Index
-#define AvDisPow_LED_5 13              // Handle of AvDisPow_LED_5
-#define AvDisPow_LED_5_idx 12          // Index
-#define AvDisPow_LED_6 14              // Handle of AvDisPow_LED_6
-#define AvDisPow_LED_6_idx 13          // Index
-#define AvDisPow_LED_7 15              // Handle of AvDisPow_LED_7
-#define AvDisPow_LED_7_idx 14          // Index
-#define portA_0 16                     // Handle of portA_0, Created by copy/paste object
-#define portA_0_idx 15                 // Index
-#define Duty_5p 17                     // Handle of Duty_5p
-#define Duty_5p_idx 16                 // Index
-#define BAT_DISCHARG_BAR 18            // Handle of BAT_DISCHARG_BAR, Created by copy/paste object
-#define BAT_DISCHARG_BAR_idx 17        // Index
-#define IcoIndx_10 19                  // Handle of IcoIndx_10, Created by copy/paste object
-#define IcoIndx_10_idx 18              // Index
-#define IcoIndx_24 20                  // Handle of IcoIndx_24, Created by copy/paste object
-#define IcoIndx_24_idx 19              // Index
-#define IcoIndx_12 21                  // Handle of IcoIndx_12, Created by copy/paste object
-#define IcoIndx_12_idx 20              // Index
-#define IcoIndx_13 22                  // Handle of IcoIndx_13, Created by copy/paste object
-#define IcoIndx_13_idx 21              // Index
-#define IcoIndx_14 23                  // Handle of IcoIndx_14, Created by copy/paste object
-#define IcoIndx_14_idx 22              // Index
-#define IcoIndx_15 24                  // Handle of IcoIndx_15, Created by copy/paste object
-#define IcoIndx_15_idx 23              // Index
-#define IcoIndx_16 25                  // Handle of IcoIndx_16, Created by copy/paste object
-#define IcoIndx_16_idx 24              // Index
-#define IcoIndx_17 26                  // Handle of IcoIndx_17, Created by copy/paste object
-#define IcoIndx_17_idx 25              // Index
-#define IcoIndx_18 27                  // Handle of IcoIndx_18, Created by copy/paste object
-#define IcoIndx_18_idx 26              // Index
-#define IcoIndx_19 28                  // Handle of IcoIndx_19, Created by copy/paste object
-#define IcoIndx_19_idx 27              // Index
-#define IcoIndx_20 29                  // Handle of IcoIndx_20, Created by copy/paste object
-#define IcoIndx_20_idx 28              // Index
-#define IcoIndx_21 30                  // Handle of IcoIndx_21, Created by copy/paste object
-#define IcoIndx_21_idx 29              // Index
-#define IcoIndx_22 31                  // Handle of IcoIndx_22, Created by copy/paste object
-#define IcoIndx_22_idx 30              // Index
-#define IcoIndx_23 32                  // Handle of IcoIndx_23, Created by copy/paste object
-#define IcoIndx_23_idx 31              // Index
-#define IcoIndx_11 33                  // Handle of IcoIndx_11
-#define IcoIndx_11_idx 32              // Index
-#define Trans_Speed 34                 // Handle of Trans_Speed, Created by copy/paste object
-#define Trans_Speed_idx 33             // Index
-#define Trans_Rpm 35                   // Handle of Trans_Rpm, Created by copy/paste object
-#define Trans_Rpm_idx 34               // Index
-#define Trans_Press 36                 // Handle of Trans_Press, Created by copy/paste object
-#define Trans_Press_idx 35             // Index
-#define REMAIN_CHARGE 37               // Handle of REMAIN_CHARGE, Created by copy/paste object
-#define REMAIN_CHARGE_idx 36           // Index
-#define INVERTER_ON 38                 // Handle of INVERTER_ON
-#define INVERTER_ON_idx 37             // Index
-#define INVERTER_ERROR 39              // Handle of INVERTER_ERROR
-#define INVERTER_ERROR_idx 38          // Index
-#define INVERTER_WARN 40               // Handle of INVERTER_WARN
-#define INVERTER_WARN_idx 39           // Index
-#define INVERTER_OVER_TEMP 41          // Handle of INVERTER_OVER_TEMP
-#define INVERTER_OVER_TEMP_idx 40      // Index
-#define INVERTER_TORQUE 42             // Handle of INVERTER_TORQUE, Реализованный момент вращения
-#define INVERTER_TORQUE_idx 41         // Index
-#define INVERTER_RPM 43                // Handle of INVERTER_RPM, Текущая частота вращения
-#define INVERTER_RPM_idx 42            // Index
-#define INVERTER_CURRENT 44            // Handle of INVERTER_CURRENT, Ток статора
-#define INVERTER_CURRENT_idx 43        // Index
-#define INVERTER_POWER 45              // Handle of INVERTER_POWER, Мощность, знаковая,
-#define INVERTER_POWER_idx 44          // Index
-#define INVERTER_VOLTAGE 46            // Handle of INVERTER_VOLTAGE, Напряжение ЗПТ,
-#define INVERTER_VOLTAGE_idx 45        // Index
-#define BAT_LOW_VOLTAGE 47             // Handle of BAT_LOW_VOLTAGE
-#define BAT_LOW_VOLTAGE_idx 46         // Index
-#define INV_LOW_LEVEL 48               // Handle of INV_LOW_LEVEL
-#define INV_LOW_LEVEL_idx 47           // Index
-#define INV_READY 49                   // Handle of INV_READY
-#define INV_READY_idx 48               // Index
-#define AKB_AVLBL 50                   // Handle of AKB_AVLBL
-#define AKB_AVLBL_idx 49               // Index
-#define INV_VOLT_BAR 51                // Handle of INV_VOLT_BAR
-#define INV_VOLT_BAR_idx 50            // Index
-#define INV_CURRENT_BAR 52             // Handle of INV_CURRENT_BAR
-#define INV_CURRENT_BAR_idx 51         // Index
-#define BAT_CURRENT_BAR 53             // Handle of BAT_CURRENT_BAR
-#define BAT_CURRENT_BAR_idx 52         // Index
-#define txtAtrTopBot 54                // Handle of txtAtrTopBot
-#define txtAtrTopBot_idx 53            // Index
-#define BAT_LOW_LVL_CHRG 55            // Handle of BAT_LOW_LVL_CHRG
-#define BAT_LOW_LVL_CHRG_idx 54        // Index
-#define RPM_ARROW 56                   // Handle of RPM_ARROW
-#define RPM_ARROW_idx 55               // Index
-#define DIST_BAT 57                    // Handle of DIST_BAT
-#define DIST_BAT_idx 56                // Index
-#define COOLANT_LOW_LVL 58             // Handle of COOLANT_LOW_LVL
-#define COOLANT_LOW_LVL_idx 57         // Index
-#define TURBO_CURR_BAR 59              // Handle of TURBO_CURR_BAR
-#define TURBO_CURR_BAR_idx 58          // Index
-#define INVERTER_ON_HYD 60             // Handle of INVERTER_ON_HYD
-#define INVERTER_ON_HYD_idx 59         // Index
-#define INVERTER_ERROR_HYD 61          // Handle of INVERTER_ERROR_HYD
-#define INVERTER_ERROR_HYD_idx 60      // Index
-#define INVERTER_WARN_HYD 62           // Handle of INVERTER_WARN_HYD
-#define INVERTER_WARN_HYD_idx 61       // Index
-#define INVERTER_OVER_TEMP_HYD 63      // Handle of INVERTER_OVER_TEMP_HYD
-#define INVERTER_OVER_TEMP_HYD_idx 62  // Index
-#define INVERTER_TORQUE_HYD 64         // Handle of INVERTER_TORQUE_HYD
-#define INVERTER_TORQUE_HYD_idx 63     // Index
-#define INVERTER_RPM_HYD 65            // Handle of INVERTER_RPM_HYD
-#define INVERTER_RPM_HYD_idx 64        // Index
-#define INVERTER_CURRENT_HYD 66        // Handle of INVERTER_CURRENT_HYD
-#define INVERTER_CURRENT_HYD_idx 65    // Index
-#define INVERTER_POWER_HYD 67          // Handle of INVERTER_POWER_HYD
-#define INVERTER_POWER_HYD_idx 66      // Index
-#define INVERTER_VOLTAGE_HYD 68        // Handle of INVERTER_VOLTAGE_HYD
-#define INVERTER_VOLTAGE_HYD_idx 67    // Index
-#define INV_READY_HYD 69               // Handle of INV_READY_HYD
-#define INV_READY_HYD_idx 68           // Index
-#define INV_LOW_LEVEL_HYD 70           // Handle of INV_LOW_LEVEL_HYD
-#define INV_LOW_LEVEL_HYD_idx 69       // Index
-#define INV_CURRENT_BAR_HYD 71         // Handle of INV_CURRENT_BAR_HYD
-#define INV_CURRENT_BAR_HYD_idx 70     // Index
-#define KEY_POSITION 72                // Handle of KEY_POSITION, ключ зажигания позиция
-#define KEY_POSITION_idx 71            // Index
-#define SOC_BAT 73                     // Handle of SOC_BAT
-#define SOC_BAT_idx 72                 // Index
-#define QueStart 74                    // Handle of QueStart
-#define QueStart_idx 73                // Index
-#define INV_LED_E_ENG 75               // Handle of INV_LED_E_ENG
-#define INV_LED_E_ENG_idx 74           // Index
-#define INV_LED_W_ENG 76               // Handle of INV_LED_W_ENG
-#define INV_LED_W_ENG_idx 75           // Index
-#define INV_LED_T_ENG 77               // Handle of INV_LED_T_ENG
-#define INV_LED_T_ENG_idx 76           // Index
-#define INV_LED_E_HYD 78               // Handle of INV_LED_E_HYD
-#define INV_LED_E_HYD_idx 77           // Index
-#define INV_LED_W_HYD 79               // Handle of INV_LED_W_HYD
-#define INV_LED_W_HYD_idx 78           // Index
-#define INV_LED_T_HYD 80               // Handle of INV_LED_T_HYD
-#define INV_LED_T_HYD_idx 79           // Index
-#define SYS_U_SUPPLY 65524             // Handle of SYS_U_SUPPLY
-#define SYS_U_SUPPLY_idx 80            // Index
-#define SYS_ENC_RIGHT 65525            // Handle of SYS_ENC_RIGHT
-#define SYS_ENC_RIGHT_idx 81           // Index
-#define SYS_ENC_LEFT 65526             // Handle of SYS_ENC_LEFT
-#define SYS_ENC_LEFT_idx 82            // Index
-#define SYS_TEMPERATURE 65527          // Handle of SYS_TEMPERATURE
-#define SYS_TEMPERATURE_idx 83         // Index
-#define SYS_PRIORITY 65528             // Handle of SYS_PRIORITY
-#define SYS_PRIORITY_idx 84            // Index
-#define SYS_COLOR 65529                // Handle of SYS_COLOR
-#define SYS_COLOR_idx 85               // Index
-#define SYS_LANGUAGE 65530             // Handle of SYS_LANGUAGE
-#define SYS_LANGUAGE_idx 86            // Index
-#define SYS_OPERATING_TIME 65531       // Handle of SYS_OPERATING_TIME
-#define SYS_OPERATING_TIME_idx 87      // Index
+#define Voltage_Level 1                          // Handle of Voltage_Level
+#define Voltage_Level_idx 0                      // Index
+#define Ignition_Is_On 2                         // Handle of Ignition_Is_On
+#define Ignition_Is_On_idx 1                     // Index
+#define Disch_Pwr 3                              // Handle of Disch_Pwr
+#define Disch_Pwr_idx 2                          // Index
+#define Current 4                                // Handle of Current
+#define Current_idx 3                            // Index
+#define FastUpdCharg 5                           // Handle of FastUpdCharg
+#define FastUpdCharg_idx 4                       // Index
+#define Hi_Cell_Volt 6                           // Handle of Hi_Cell_Volt
+#define Hi_Cell_Volt_idx 5                       // Index
+#define Low_Cell_Volt 7                          // Handle of Low_Cell_Volt
+#define Low_Cell_Volt_idx 6                      // Index
+#define Discharge_Cap 8                          // Handle of Discharge_Cap
+#define Discharge_Cap_idx 7                      // Index
+#define AvDisPow_LED_1 9                         // Handle of AvDisPow_LED_1
+#define AvDisPow_LED_1_idx 8                     // Index
+#define AvDisPow_LED_2 10                        // Handle of AvDisPow_LED_2
+#define AvDisPow_LED_2_idx 9                     // Index
+#define AvDisPow_LED_3 11                        // Handle of AvDisPow_LED_3
+#define AvDisPow_LED_3_idx 10                    // Index
+#define AvDisPow_LED_4 12                        // Handle of AvDisPow_LED_4
+#define AvDisPow_LED_4_idx 11                    // Index
+#define AvDisPow_LED_5 13                        // Handle of AvDisPow_LED_5
+#define AvDisPow_LED_5_idx 12                    // Index
+#define AvDisPow_LED_6 14                        // Handle of AvDisPow_LED_6
+#define AvDisPow_LED_6_idx 13                    // Index
+#define AvDisPow_LED_7 15                        // Handle of AvDisPow_LED_7
+#define AvDisPow_LED_7_idx 14                    // Index
+#define portA_0 16                               // Handle of portA_0, Created by copy/paste object
+#define portA_0_idx 15                           // Index
+#define Duty_5p 17                               // Handle of Duty_5p
+#define Duty_5p_idx 16                           // Index
+#define BAT_DISCHARG_BAR 18                      // Handle of BAT_DISCHARG_BAR, Created by copy/paste object
+#define BAT_DISCHARG_BAR_idx 17                  // Index
+#define IcoIndx_10 19                            // Handle of IcoIndx_10, Created by copy/paste object
+#define IcoIndx_10_idx 18                        // Index
+#define IcoIndx_24 20                            // Handle of IcoIndx_24, Created by copy/paste object
+#define IcoIndx_24_idx 19                        // Index
+#define IcoIndx_12 21                            // Handle of IcoIndx_12, Created by copy/paste object
+#define IcoIndx_12_idx 20                        // Index
+#define IcoIndx_13 22                            // Handle of IcoIndx_13, Created by copy/paste object
+#define IcoIndx_13_idx 21                        // Index
+#define IcoIndx_14 23                            // Handle of IcoIndx_14, Created by copy/paste object
+#define IcoIndx_14_idx 22                        // Index
+#define IcoIndx_15 24                            // Handle of IcoIndx_15, Created by copy/paste object
+#define IcoIndx_15_idx 23                        // Index
+#define IcoIndx_16 25                            // Handle of IcoIndx_16, Created by copy/paste object
+#define IcoIndx_16_idx 24                        // Index
+#define IcoIndx_17 26                            // Handle of IcoIndx_17, Created by copy/paste object
+#define IcoIndx_17_idx 25                        // Index
+#define IcoIndx_18 27                            // Handle of IcoIndx_18, Created by copy/paste object
+#define IcoIndx_18_idx 26                        // Index
+#define IcoIndx_19 28                            // Handle of IcoIndx_19, Created by copy/paste object
+#define IcoIndx_19_idx 27                        // Index
+#define IcoIndx_20 29                            // Handle of IcoIndx_20, Created by copy/paste object
+#define IcoIndx_20_idx 28                        // Index
+#define IcoIndx_21 30                            // Handle of IcoIndx_21, Created by copy/paste object
+#define IcoIndx_21_idx 29                        // Index
+#define IcoIndx_22 31                            // Handle of IcoIndx_22, Created by copy/paste object
+#define IcoIndx_22_idx 30                        // Index
+#define IcoIndx_23 32                            // Handle of IcoIndx_23, Created by copy/paste object
+#define IcoIndx_23_idx 31                        // Index
+#define IcoIndx_11 33                            // Handle of IcoIndx_11
+#define IcoIndx_11_idx 32                        // Index
+#define Trans_Speed 34                           // Handle of Trans_Speed, Created by copy/paste object
+#define Trans_Speed_idx 33                       // Index
+#define Trans_Rpm 35                             // Handle of Trans_Rpm, Created by copy/paste object
+#define Trans_Rpm_idx 34                         // Index
+#define Trans_Press 36                           // Handle of Trans_Press, Created by copy/paste object
+#define Trans_Press_idx 35                       // Index
+#define REMAIN_CHARGE 37                         // Handle of REMAIN_CHARGE, Created by copy/paste object
+#define REMAIN_CHARGE_idx 36                     // Index
+#define INVERTER_ON 38                           // Handle of INVERTER_ON
+#define INVERTER_ON_idx 37                       // Index
+#define INVERTER_ERROR 39                        // Handle of INVERTER_ERROR
+#define INVERTER_ERROR_idx 38                    // Index
+#define INVERTER_WARN 40                         // Handle of INVERTER_WARN
+#define INVERTER_WARN_idx 39                     // Index
+#define INVERTER_OVER_TEMP 41                    // Handle of INVERTER_OVER_TEMP
+#define INVERTER_OVER_TEMP_idx 40                // Index
+#define INVERTER_TORQUE 42                       // Handle of INVERTER_TORQUE, Реализованный момент вращения
+#define INVERTER_TORQUE_idx 41                   // Index
+#define INVERTER_RPM 43                          // Handle of INVERTER_RPM, Текущая частота вращения
+#define INVERTER_RPM_idx 42                      // Index
+#define INVERTER_CURRENT 44                      // Handle of INVERTER_CURRENT, Ток статора
+#define INVERTER_CURRENT_idx 43                  // Index
+#define INVERTER_POWER 45                        // Handle of INVERTER_POWER, Мощность, знаковая,
+#define INVERTER_POWER_idx 44                    // Index
+#define INVERTER_VOLTAGE 46                      // Handle of INVERTER_VOLTAGE, Напряжение ЗПТ,
+#define INVERTER_VOLTAGE_idx 45                  // Index
+#define BAT_LOW_VOLTAGE 47                       // Handle of BAT_LOW_VOLTAGE
+#define BAT_LOW_VOLTAGE_idx 46                   // Index
+#define INV_LOW_LEVEL 48                         // Handle of INV_LOW_LEVEL
+#define INV_LOW_LEVEL_idx 47                     // Index
+#define INV_READY 49                             // Handle of INV_READY
+#define INV_READY_idx 48                         // Index
+#define AKB_AVLBL 50                             // Handle of AKB_AVLBL
+#define AKB_AVLBL_idx 49                         // Index
+#define INV_VOLT_BAR 51                          // Handle of INV_VOLT_BAR
+#define INV_VOLT_BAR_idx 50                      // Index
+#define INV_CURRENT_BAR 52                       // Handle of INV_CURRENT_BAR
+#define INV_CURRENT_BAR_idx 51                   // Index
+#define BAT_CURRENT_BAR 53                       // Handle of BAT_CURRENT_BAR
+#define BAT_CURRENT_BAR_idx 52                   // Index
+#define txtAtrTopBot 54                          // Handle of txtAtrTopBot
+#define txtAtrTopBot_idx 53                      // Index
+#define BAT_LOW_LVL_CHRG 55                      // Handle of BAT_LOW_LVL_CHRG
+#define BAT_LOW_LVL_CHRG_idx 54                  // Index
+#define RPM_ARROW 56                             // Handle of RPM_ARROW
+#define RPM_ARROW_idx 55                         // Index
+#define DIST_BAT 57                              // Handle of DIST_BAT
+#define DIST_BAT_idx 56                          // Index
+#define COOLANT_LOW_LVL 58                       // Handle of COOLANT_LOW_LVL
+#define COOLANT_LOW_LVL_idx 57                   // Index
+#define TURBO_CURR_BAR 59                        // Handle of TURBO_CURR_BAR
+#define TURBO_CURR_BAR_idx 58                    // Index
+#define INVERTER_ON_HYD 60                       // Handle of INVERTER_ON_HYD
+#define INVERTER_ON_HYD_idx 59                   // Index
+#define INVERTER_ERROR_HYD 61                    // Handle of INVERTER_ERROR_HYD
+#define INVERTER_ERROR_HYD_idx 60                // Index
+#define INVERTER_WARN_HYD 62                     // Handle of INVERTER_WARN_HYD
+#define INVERTER_WARN_HYD_idx 61                 // Index
+#define INVERTER_OVER_TEMP_HYD 63                // Handle of INVERTER_OVER_TEMP_HYD
+#define INVERTER_OVER_TEMP_HYD_idx 62            // Index
+#define INVERTER_TORQUE_HYD 64                   // Handle of INVERTER_TORQUE_HYD
+#define INVERTER_TORQUE_HYD_idx 63               // Index
+#define INVERTER_RPM_HYD 65                      // Handle of INVERTER_RPM_HYD
+#define INVERTER_RPM_HYD_idx 64                  // Index
+#define INVERTER_CURRENT_HYD 66                  // Handle of INVERTER_CURRENT_HYD
+#define INVERTER_CURRENT_HYD_idx 65              // Index
+#define INVERTER_POWER_HYD 67                    // Handle of INVERTER_POWER_HYD
+#define INVERTER_POWER_HYD_idx 66                // Index
+#define INVERTER_VOLTAGE_HYD 68                  // Handle of INVERTER_VOLTAGE_HYD
+#define INVERTER_VOLTAGE_HYD_idx 67              // Index
+#define INV_READY_HYD 69                         // Handle of INV_READY_HYD
+#define INV_READY_HYD_idx 68                     // Index
+#define INV_LOW_LEVEL_HYD 70                     // Handle of INV_LOW_LEVEL_HYD
+#define INV_LOW_LEVEL_HYD_idx 69                 // Index
+#define INV_CURRENT_BAR_HYD 71                   // Handle of INV_CURRENT_BAR_HYD
+#define INV_CURRENT_BAR_HYD_idx 70               // Index
+#define KEY_POSITION 72                          // Handle of KEY_POSITION, ключ зажигания позиция
+#define KEY_POSITION_idx 71                      // Index
+#define SOC_BAT 73                               // Handle of SOC_BAT
+#define SOC_BAT_idx 72                           // Index
+#define QueStart 74                              // Handle of QueStart
+#define QueStart_idx 73                          // Index
+#define INV_LED_E_ENG 75                         // Handle of INV_LED_E_ENG
+#define INV_LED_E_ENG_idx 74                     // Index
+#define INV_LED_W_ENG 76                         // Handle of INV_LED_W_ENG
+#define INV_LED_W_ENG_idx 75                     // Index
+#define INV_LED_T_ENG 77                         // Handle of INV_LED_T_ENG
+#define INV_LED_T_ENG_idx 76                     // Index
+#define INV_LED_E_HYD 78                         // Handle of INV_LED_E_HYD
+#define INV_LED_E_HYD_idx 77                     // Index
+#define INV_LED_W_HYD 79                         // Handle of INV_LED_W_HYD
+#define INV_LED_W_HYD_idx 78                     // Index
+#define INV_LED_T_HYD 80                         // Handle of INV_LED_T_HYD
+#define INV_LED_T_HYD_idx 79                     // Index
+#define DIG_OUT_0 81                             // Handle of DIG_OUT_0
+#define DIG_OUT_0_idx 80                         // Index
+#define ProfileIcon_1 82                         // Handle of ProfileIcon_1, Created by copy/paste object
+#define ProfileIcon_1_idx 81                     // Index
+#define BrushesAnimation 83                      // Handle of BrushesAnimation, Created by copy/paste object
+#define BrushesAnimation_idx 82                  // Index
+#define brush_speed_var 84                       // Handle of brush_speed_var, Created by copy/paste object
+#define brush_speed_var_idx 83                   // Index
+#define body_down_var 85                         // Handle of body_down_var, Created by copy/paste object
+#define body_down_var_idx 84                     // Index
+#define body_up_var 86                           // Handle of body_up_var, Created by copy/paste object
+#define body_up_var_idx 85                       // Index
+#define cap_down_var 87                          // Handle of cap_down_var, Created by copy/paste object
+#define cap_down_var_idx 86                      // Index
+#define cap_up_var 88                            // Handle of cap_up_var, Created by copy/paste object
+#define cap_up_var_idx 87                        // Index
+#define Y11State_Var 89                          // Handle of Y11State_Var, Created by copy/paste object
+#define Y11State_Var_idx 88                      // Index
+#define Y3State_Var 90                           // Handle of Y3State_Var, Created by copy/paste object
+#define Y3State_Var_idx 89                       // Index
+#define vacuum_active_var 91                     // Handle of vacuum_active_var, Created by copy/paste object
+#define vacuum_active_var_idx 90                 // Index
+#define vacuum_speed_var 92                      // Handle of vacuum_speed_var, Created by copy/paste object
+#define vacuum_speed_var_idx 91                  // Index
+#define AutoMode_Var 93                          // Handle of AutoMode_Var, Created by copy/paste object
+#define AutoMode_Var_idx 92                      // Index
+#define PauseMode_Var 94                         // Handle of PauseMode_Var, Created by copy/paste object
+#define PauseMode_Var_idx 93                     // Index
+#define WorkingMode_var 95                       // Handle of WorkingMode_var, Created by copy/paste object
+#define WorkingMode_var_idx 94                   // Index
+#define VKM_FuelLevel_Var 96                     // Handle of VKM_FuelLevel_Var, Created by copy/paste object
+#define VKM_FuelLevel_Var_idx 95                 // Index
+#define MCMVoltage_Visu_Var 97                   // Handle of MCMVoltage_Visu_Var, Created by copy/paste object
+#define MCMVoltage_Visu_Var_idx 96               // Index
+#define VKM_Visu_FuelLevel_Var 98                // Handle of VKM_Visu_FuelLevel_Var, Created by copy/paste object
+#define VKM_Visu_FuelLevel_Var_idx 97            // Index
+#define brush_active_var 99                      // Handle of brush_active_var, Created by copy/paste object
+#define brush_active_var_idx 98                  // Index
+#define vacuum_down_var 100                      // Handle of vacuum_down_var, Created by copy/paste object
+#define vacuum_down_var_idx 99                   // Index
+#define vacuum_up_var 101                        // Handle of vacuum_up_var, Created by copy/paste object
+#define vacuum_up_var_idx 100                    // Index
+#define ProfileIcon_2 102                        // Handle of ProfileIcon_2, Created by copy/paste object
+#define ProfileIcon_2_idx 101                    // Index
+#define ProfileIcon_3 103                        // Handle of ProfileIcon_3, Created by copy/paste object
+#define ProfileIcon_3_idx 102                    // Index
+#define ProfileIcon_6 104                        // Handle of ProfileIcon_6, Created by copy/paste object
+#define ProfileIcon_6_idx 103                    // Index
+#define ProfileIcon_5 105                        // Handle of ProfileIcon_5, Created by copy/paste object
+#define ProfileIcon_5_idx 104                    // Index
+#define ProfileIcon_4 106                        // Handle of ProfileIcon_4, Created by copy/paste object
+#define ProfileIcon_4_idx 105                    // Index
+#define ProfileIcon_9 107                        // Handle of ProfileIcon_9, Created by copy/paste object
+#define ProfileIcon_9_idx 106                    // Index
+#define ProfileIcon_8 108                        // Handle of ProfileIcon_8, Created by copy/paste object
+#define ProfileIcon_8_idx 107                    // Index
+#define ProfileIcon_7 109                        // Handle of ProfileIcon_7, Created by copy/paste object
+#define ProfileIcon_7_idx 108                    // Index
+#define PARK_PRESSURE 110                        // Handle of PARK_PRESSURE
+#define PARK_PRESSURE_idx 109                    // Index
+#define VKM_Speed_KMH_Visu_Var 111               // Handle of VKM_Speed_KMH_Visu_Var, Created by copy/paste object
+#define VKM_Speed_KMH_Visu_Var_idx 110           // Index
+#define MenuVKM 112                              // Handle of MenuVKM, Created by copy/paste object
+#define MenuVKM_idx 111                          // Index
+#define BunkerAnimation 113                      // Handle of BunkerAnimation, Created by copy/paste object
+#define BunkerAnimation_idx 112                  // Index
+#define CapAnimation 114                         // Handle of CapAnimation, Created by copy/paste object
+#define CapAnimation_idx 113                     // Index
+#define VKM_Movement_PedalState_Free 115         // Handle of VKM_Movement_PedalState_Free, Created by copy/paste object
+#define VKM_Movement_PedalState_Free_idx 114     // Index
+#define VKM_Movement_PedalState_Pressed 116      // Handle of VKM_Movement_PedalState_Pressed, Created by copy/paste object
+#define VKM_Movement_PedalState_Pressed_idx 115  // Index
+#define DIG_OUT_1 117                            // Handle of DIG_OUT_1
+#define DIG_OUT_1_idx 116                        // Index
+#define DIG_OUT_3 118                            // Handle of DIG_OUT_3
+#define DIG_OUT_3_idx 117                        // Index
+#define DIG_OUT_2 119                            // Handle of DIG_OUT_2
+#define DIG_OUT_2_idx 118                        // Index
+#define work_stat 120                            // Handle of work_stat
+#define work_stat_idx 119                        // Index
+#define ON_WETTING 121                           // Handle of ON_WETTING
+#define ON_WETTING_idx 120                       // Index
+#define BRAKE_PRESSURE 122                       // Handle of BRAKE_PRESSURE
+#define BRAKE_PRESSURE_idx 121                   // Index
+#define BRAKE_PEDAL 123                          // Handle of BRAKE_PEDAL
+#define BRAKE_PEDAL_idx 122                      // Index
+#define main_br_active 124                       // Handle of main_br_active
+#define main_br_active_idx 123                   // Index
+#define main_brsh_speed 125                      // Handle of main_brsh_speed
+#define main_brsh_speed_idx 124                  // Index
+#define main_br_anim 126                         // Handle of main_br_anim
+#define main_br_anim_idx 125                     // Index
+#define Box_IS_UP 127                            // Handle of Box_IS_UP
+#define Box_IS_UP_idx 126                        // Index
+#define COLANT_LOW 128                           // Handle of COLANT_LOW
+#define COLANT_LOW_idx 127                       // Index
+#define TURTLE 129                               // Handle of TURTLE
+#define TURTLE_idx 128                           // Index
+#define LOW_LEV_HYD 130                          // Handle of LOW_LEV_HYD
+#define LOW_LEV_HYD_idx 129                      // Index
+#define OVER_TERM_HYD 131                        // Handle of OVER_TERM_HYD
+#define OVER_TERM_HYD_idx 130                    // Index
+#define RAMP_OPEN 132                            // Handle of RAMP_OPEN
+#define RAMP_OPEN_idx 131                        // Index
+#define SYS_U_SUPPLY 65524                       // Handle of SYS_U_SUPPLY
+#define SYS_U_SUPPLY_idx 132                     // Index
+#define SYS_ENC_RIGHT 65525                      // Handle of SYS_ENC_RIGHT
+#define SYS_ENC_RIGHT_idx 133                    // Index
+#define SYS_ENC_LEFT 65526                       // Handle of SYS_ENC_LEFT
+#define SYS_ENC_LEFT_idx 134                     // Index
+#define SYS_TEMPERATURE 65527                    // Handle of SYS_TEMPERATURE
+#define SYS_TEMPERATURE_idx 135                  // Index
+#define SYS_PRIORITY 65528                       // Handle of SYS_PRIORITY
+#define SYS_PRIORITY_idx 136                     // Index
+#define SYS_COLOR 65529                          // Handle of SYS_COLOR
+#define SYS_COLOR_idx 137                        // Index
+#define SYS_LANGUAGE 65530                       // Handle of SYS_LANGUAGE
+#define SYS_LANGUAGE_idx 138                     // Index
+#define SYS_OPERATING_TIME 65531                 // Handle of SYS_OPERATING_TIME
+#define SYS_OPERATING_TIME_idx 139               // Index
 #undef USE_OLDSTYLE_VARIABLE_SYMBOLS
 #endif
 

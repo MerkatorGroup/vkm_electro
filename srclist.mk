@@ -24,6 +24,9 @@ SRC += .\SIMULATION\simul.c
 SRC += Hyd_Inv_Ctrl.c 
 SRC += .\src\J1939\j1939.c 
 SRC += .\src\J1939\Spn.c 
+SRC += MR_Config.c 
+SRC += work_site.c 
+SRC += wor_site_visu.c 
 # Debug options
 FLAG_DEBUG = 0
 FLAG_WINSIMU = 1

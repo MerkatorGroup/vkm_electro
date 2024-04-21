@@ -12,9 +12,10 @@ const tGsContInfo _gs_prjusercinfo_mContInfo[] =
     {.mName = "VelcheIcons_1", .mNumber = 0},
     {.mName = "DashCont", .mNumber = 1},
     {.mName = "Container2", .mNumber = 2},
-    {.mName = "ContParam", .mNumber = 3}
+    {.mName = "ContParam", .mNumber = 3},
+    {.mName = "Container4", .mNumber = 4}
 };
-const size_t _gs_prjusercinfo_mContInfoSize = 4;
+const size_t _gs_prjusercinfo_mContInfoSize = 5;
 
 /* ----- Mask info ----- */
 const tGsMaskInfo _gs_prjusercinfo_mMaskInfo[] =
@@ -22,7 +23,8 @@ const tGsMaskInfo _gs_prjusercinfo_mMaskInfo[] =
     {.mName = "0", .mNumber = 0},
     {.mName = "Mask1", .mNumber = 1},
     {.mName = "DashBoard", .mNumber = 2},
-    {.mName = "Mask_PARAM", .mNumber = 3}
+    {.mName = "Mask_PARAM", .mNumber = 3},
+    {.mName = "WorkSite", .mNumber = 4}
 };
-const size_t _gs_prjusercinfo_mMaskInfoSize = 4;
+const size_t _gs_prjusercinfo_mMaskInfoSize = 5;
 
