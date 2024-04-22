@@ -57,7 +57,7 @@ void *Thread_MAIN(void *arg) {
     ini_work_eq();
 
 MR_SetDO_byName("key_pos_2" , 0 );  // сброс поддержки питания
-MR_MCM_SetPWMOut_by_Name("coolant_pump_spd" , 400, 500) ;
+MR_MCM_SetPWMOut_by_Name("coolant_pump_spd" , 400, 950) ;
 
     while (1) {
         u8 fBatLowL = GetVar(HDL_BAT_LOW_LVL_CHRG);

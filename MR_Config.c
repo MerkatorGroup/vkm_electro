@@ -175,8 +175,8 @@ inpOutp_tdf MCM_2 [18]={
 		{ .PinNum =29,.typeIo = NOT_USE},
 };
 inpOutp_tdf MCM_3 [18] = {
-	{ .PinNum =3,.typeIo = DOut,.Name = "fr_brsh_up" },
-	{ .PinNum =4,.typeIo = DOut,.Name = "fr_brsh_dwn" },
+	{ .PinNum =3,.typeIo = DOut,.Name =  "fr_brsh_dwn"},
+	{ .PinNum =4,.typeIo = DOut,.Name =  "fr_brsh_up"},
 	{ .PinNum =5,.typeIo = DOut,.Name ="fr_brsh_fold" },//
 	{ .PinNum =6,.typeIo = DOut,.Name = "fr_brsh_tilt_r"},
 	{ .PinNum =7,.typeIo = DOut,.Name = "lft_brsh_unfold"},
@@ -194,75 +194,5 @@ inpOutp_tdf MCM_3 [18] = {
 	{ .PinNum =28,.typeIo = NOT_USE}, //
 	{ .PinNum =29,.typeIo = DOut,.Name = "wetting"},
 };
-
-
-// Actions_Arr Equip_FRONT={
-//     .EquiP[UP_DWN] ={ &MCM_1[pin5],&MCM_1[pin5], Valve_PVEH_16,55},
-//     .EquiP[LFT_RGHT] ={ &MCM_1[pin29],&MCM_1[pin28], Valve_PVEO_2,55},// discret
-//     .EquiP[Float]={ &MCM_1[pin3],0, Valve_PVEO_1,0}, // discret
-//     .EquiP[SteelRuber]={ &MCM_1[pin8],&MCM_1[pin7], Valve_PVEO_2,0}, // discret
-//     .EquiP[LOCK] ={ &MCM_1[pin4],0, Valve_PVEO_1,0}, // discret
-//     .EquiP[Unload] ={NULL,NULL,0,0} // discret
-// };
-
-// Actions_Arr Equip_MIDDLE={
-//     .EquiP[UP_DWN] ={ &MCM_1[pin5],&MCM_1[pin5], Valve_PVEH_16,55},
-//     .EquiP[LFT_RGHT] ={NULL,NULL,0,0},// discret
-//     .EquiP[Float]={ &MCM_1[pin3],0, Valve_PVEO_1,0}, // discret
-//     .EquiP[Unload] ={NULL,NULL,0,0} // discret
-// };
-
-// tAttachModul FrontAtch[]={
-//  {.name = "NONE" ,.containerNum = 0, .Class = {0}},
-//  {.name = "PLOUGH_FK" ,.containerNum = 22, .Class.type = ePLOUGH,.Class.Actions = &Equip_FRONT},
-//  {.name = "PLOUGH_TN" ,.containerNum = 29, .Class.type = ePLOUGH,.Class.Actions = &Equip_FRONT},
-//  {.name = "PLOUGH_TE" ,.containerNum = 24, .Class.type = ePLOUGH,.Class.Actions = &Equip_FRONT}
-
-// };
-
-// tAttachModul MiddleAtch[]={
-//  {.name = "NONE" ,.containerNum = 0, .Class = {0}},
-//  {.name = "BRUSH_OMP220" ,.containerNum = 26, .Class.type = eBRUSH,.Class.Actions = &Equip_MIDDLE}
-
-// };
-
-// pump MainPump = {55, 0.95f,1.0f,52.25f};
-// HydroEng MS_160CM = {160,0.95f,1.0f, 152.0f}; // щетка ОМП220
-// //HydroEng MS_160CM = {160,0.95f,1.0f, 152.0f};
-
-// // --------------------------
-
-
-// //const valv_settings SettAkon = {
-// //		.Name = "AKON_CAN",
-// //		.NumSect = 8,
-// //		.SectSett[0]= {SimpleMode ,100000},
-// //		.SectSett[1]= {SimpleMode ,100000},
-// //		.SectSett[2]= {SimpleMode ,10000},
-// //		.SectSett[3]= {SimpleMode ,10000},
-// //		.SectSett[4]= {Floatmode , 25000},
-// //		.SectSett[5]= {SimpleMode ,25000},
-// //		.SectSett[6]= {SimpleMode ,25000},
-// //		.SectSett[7]= {SimpleMode ,10000}
-// //};
-
-// const valv_settings SettOMFB = {
-// 		.Name = "OMFB",
-// 		.NumSect = 2,
-// 		.SectSett[0]= {SimpleMode ,100000},
-// 		.SectSett[1]= {SimpleMode ,100000}
-// };
-// const valv_settings SettDanfoss = {
-// 		.Name = "Danfoss",
-// 		.NumSect = 7,
-// 		.SectSett[0]= {SimpleMode ,100000},
-// 		.SectSett[1]= {SimpleMode ,100000},
-// 		.SectSett[2]= {SimpleMode ,10000},
-// 		.SectSett[3]= {SimpleMode ,100000},
-// 		.SectSett[4]= {SimpleMode ,100000},
-// 		.SectSett[5]= {SimpleMode ,100000},
-// 		.SectSett[6]= {SimpleMode ,100000}
-// };
-
 
 

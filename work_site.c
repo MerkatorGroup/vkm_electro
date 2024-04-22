@@ -107,7 +107,7 @@ static void* Thread_EqWork(void* arg) {
  ****************************************************************************/
 void work_cycle(u8 mode_main) {
     // static u8 onoff_y11 =0;
-    // mode_main = ON_WORK;
+    mode_main = ON_WORK;
   if (mode_main == ON_WORK)
     {
         trunk_shaft_cycl();
@@ -307,9 +307,11 @@ static void fr_br_tilt_cycl(void) {
 
 static void fr_br_up_dwn_cycl(void) {
     if (Frnt_br_butt_up_dwn.stat.bits.isNew) {
-        if (Frnt_br_butt_up_dwn.val & 0x10) {  // опускаем
+        if ((Frnt_br_butt_up_dwn.val & 0x14) == 0x04)  {  // опускаем
             MR_SetDO_byName("fr_brsh_dwn", 1);
-        } else if (Frnt_br_butt_up_dwn.val & 0x04) {  // поднимаем
+            CommonOnProc &= ~((u32)8);
+
+        } else if ((Frnt_br_butt_up_dwn.val & 0x14) == 0x10) {  // поднимаем
             MR_SetDO_byName("fr_brsh_up", 1);
             usleep(COMON_DELAY);  /// 50 ms
             MR_SetDO_byName("hyd_comon", 1);

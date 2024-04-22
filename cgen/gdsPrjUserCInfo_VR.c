@@ -141,6 +141,9 @@ const tGsVarInfo _gs_prjusercinfo_mVarInfo[] =
     {.mHandle = 130, .mName = "LOW_LEV_HYD", .mComment = ""},
     {.mHandle = 131, .mName = "OVER_TERM_HYD", .mComment = ""},
     {.mHandle = 132, .mName = "RAMP_OPEN", .mComment = ""},
+    {.mHandle = 133, .mName = "STAT_KE_01", .mComment = ""},
+    {.mHandle = 134, .mName = "KEY_YELLOW", .mComment = ""},
+    {.mHandle = 135, .mName = "KEY_GREY", .mComment = ""},
     {.mHandle = 65524, .mName = "SYS_U_SUPPLY", .mComment = ""},
     {.mHandle = 65525, .mName = "SYS_ENC_RIGHT", .mComment = ""},
     {.mHandle = 65526, .mName = "SYS_ENC_LEFT", .mComment = ""},
@@ -150,5 +153,5 @@ const tGsVarInfo _gs_prjusercinfo_mVarInfo[] =
     {.mHandle = 65530, .mName = "SYS_LANGUAGE", .mComment = ""},
     {.mHandle = 65531, .mName = "SYS_OPERATING_TIME", .mComment = ""}
 };
-const size_t _gs_prjusercinfo_mVarInfoSize = 140;
+const size_t _gs_prjusercinfo_mVarInfoSize = 143;
 

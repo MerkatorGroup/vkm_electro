@@ -162,6 +162,11 @@ int parseMCM(tCanMessage *msg) {
 */
  int MR_SetDO_byName(char* nameIO_do , u8 Val ){
 //Add All Modules jf Slaves devices
+
+// int r = strcmp(nameIO_do ,"hyd_comon");
+// if((r == 0)&&(Val != 0))
+//     r =58;
+
 	for( u32 imcm = 0; imcm < 4; imcm++ ) {
     tMr_SLV_DEV* thisMCM  = &_pSlvMCMs[imcm];
     inpOutp_tdf* curIo= thisMCM->MCM.MCM250.pIOs;
