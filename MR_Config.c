@@ -175,14 +175,14 @@ inpOutp_tdf MCM_2 [18]={
 		{ .PinNum =29,.typeIo = NOT_USE},
 };
 inpOutp_tdf MCM_3 [18] = {
-	{ .PinNum =3,.typeIo = DOut,.Name =  "fr_brsh_dwn"},
-	{ .PinNum =4,.typeIo = DOut,.Name =  "fr_brsh_up"},
-	{ .PinNum =5,.typeIo = DOut,.Name ="fr_brsh_fold" },//
-	{ .PinNum =6,.typeIo = DOut,.Name = "fr_brsh_tilt_r"},
-	{ .PinNum =7,.typeIo = DOut,.Name = "lft_brsh_unfold"},
-	{ .PinNum =8,.typeIo = DOut,.Name = "lft_brsh_fold"},
-	{ .PinNum =9,.typeIo = DOut,.Name = "fr_brsh_tilt_l" },
-	{ .PinNum =10,.typeIo = DOut,.Name = "fr_brsh_unfold"},
+	{ .PinNum =3,.typeIo = DOut,.Name =  "fr_brsh_up"}, //0
+	{ .PinNum =4,.typeIo = DOut,.Name =  "fr_brsh_dwn"},  //2
+	{ .PinNum =5,.typeIo = DOut,.Name ="fr_brsh_fold" },//1
+	{ .PinNum =6,.typeIo = DOut,.Name = "fr_brsh_tilt_r"},//3
+	{ .PinNum =7,.typeIo = DOut,.Name = "lft_brsh_unfold"},//5
+	{ .PinNum =8,.typeIo = DOut,.Name = "lft_brsh_fold"},//7
+	{ .PinNum =9,.typeIo = DOut,.Name = "fr_brsh_tilt_l" },//4
+	{ .PinNum =10,.typeIo = DOut,.Name = "fr_brsh_unfold"},//6
 	{ .PinNum =20,.typeIo =  NOT_USE}, //
 	{ .PinNum =21,.typeIo = NOT_USE},
 	{ .PinNum =22,.typeIo = NOT_USE},

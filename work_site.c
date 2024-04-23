@@ -656,11 +656,11 @@ static int parsePGN_WorkCtrl(tCanMessage* msg) {
             }
             if (Frnt_br_butt_up_dwn.stat.bits.isNew == 0) {
                 Frnt_br_butt_up_dwn.stat.bits.isNew = 1;
-                Frnt_br_butt_up_dwn.val = (msg->data.u8[0] & 0x14);
+                Frnt_br_butt_up_dwn.val = (msg->data.u8[0] & 0x14) ;
             }
             if (Frnt_br_butt_tilt.stat.bits.isNew == 0) {
                 Frnt_br_butt_tilt.stat.bits.isNew = 1;
-                Frnt_br_butt_tilt.val = (msg->data.u8[1] & 0x14);
+                Frnt_br_butt_tilt.val = (msg->data.u8[2] & 0x14);
             }
             if (Frnt_br_butt_fold.stat.bits.isNew == 0) {
                 Frnt_br_butt_fold.stat.bits.isNew = 1;
