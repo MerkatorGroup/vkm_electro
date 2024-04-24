@@ -118,9 +118,9 @@ void SetPWM_5PIN(int32_t Direct) {
     // SetVar(HDL_DUTY_5P,t_duty);
     if (GetVar(HDL_INVERTER_ON_HYD))
     {
-        s8 prcnt = Inv_Hydr.TorqPercent;
-        prcnt += Direct;
-        if ((prcnt > -1) && (prcnt < 101)) {
+        s16 prcnt = Inv_Hydr.TorqPercent;
+        prcnt += Direct*10;
+        if ((prcnt > -1) && (prcnt < 1001)) {
             Inv_Hydr.TorqPercent = prcnt;
         }
         SetVar(HDL_DUTY_5P,Inv_Hydr.TorqPercent);

@@ -38,6 +38,7 @@
 #define FillOnBand(x,min,max)  x < min ?  (x = min )  :  x > max ? (x = max)  : (x = x)
 #define constrain(x,min,max)  x < min ?  min   :  x > max ? max   : (x )
 #define dec_elapced(x) x > 0 ? x--, 0 : 1
+#define CirclInc(x,min,max) x++; if(x>max)x=min
 
 
 #define ENABLE 1
@@ -137,7 +138,7 @@ typedef struct _t_Inv_Profile{
 e_mode_op OnOff;
 u8 Retarder;
 u8 EmergensyStop;
-s8 TorqPercent;
+s16 TorqPercent;  // promile
 u8 Inv_OnLine;
 }t_Inv_Profile;
 extern t_Inv_Profile Inv_Engine;

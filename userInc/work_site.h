@@ -60,8 +60,8 @@ typedef struct _encoder_butt{
     int hdl_VISU_BRSH_SPEED;
     int hdl_VISU_BR_ACTIVE;
     int hdl_visu_BR_ANIM;
-
-
+    u8 QuePress;
+    s16 HydTorq_add ;
 }encoder_butt;
 
 

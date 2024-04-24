@@ -54,7 +54,8 @@ encoder_butt FrntBrshEncBut = {
   .hdl_visu_BR_ANIM = HDL_MAIN_BR_ANIM,
   .hdl_VISU_BRSH_SPEED = HDL_MAIN_BRSH_SPEED,
   .min = 370, .max = 800,
-  .Onoff =0, .OnEditRPM =0, .curValEnc =0,.currPromile =0,
+  .Onoff =0, .OnEditRPM =0, .curValEnc =0,.currPromile =0,.QuePress =2,
+  .HydTorq_add = 0
 };
 encoder_butt sideBrshEncBut = {
   .namePWM_IO = "side_brush_spd",
@@ -65,7 +66,8 @@ encoder_butt sideBrshEncBut = {
   .hdl_VISU_BRSH_SPEED = HDL_BRUSH_SPEED_VAR,
   .min = 270, .max = 800,
 
-  .Onoff =0, .OnEditRPM =0, .curValEnc =0,.currPromile =0,
+  .Onoff =0, .OnEditRPM =0, .curValEnc =0,.currPromile =0,.QuePress =2,
+  .HydTorq_add = 0
 };
 
 u32 FiFo_WorkEq;
@@ -127,7 +129,7 @@ void work_cycle(u8 mode_main) {
           MR_SetDO_byName("hyd_comon", 0);
     }
     if((sideBrshEncBut.Onoff == 0) && (FrntBrshEncBut.Onoff == 0))
-      Inv_Hydr.TorqPercent = 25;
+      Inv_Hydr.TorqPercent = 250;
 }
 static void side_brush_fold_cycl(void) {
     static s8 isOnFold = 0;
@@ -352,7 +354,7 @@ static void trunk_shaft_cycl(void) {
             // usleep(TIME_HYD_WORK);  /// 3s
             // MR_SetDO_byName("hyd_comon", 0);
             // CommonOnProc |= 1;
-            SetVar(HDL_BRUSHESANIMATION,1);
+            SetVar(HDL_BRUSHESANIMATION, 1);
 
         } else if (trunk_shaft_butt.val & 0x40) {  // поднимаем, складываем
         SendToVisuObj(OBJ_BUT_ACT_2, GS_TO_VISU_SET_ATTR_VISIBLE, 1);
@@ -447,12 +449,18 @@ static void wetting_cycl(void) {
 
 static void Brush_Adjst_cycl(encoder_butt * enc_but) {
     if (enc_but->pEnc->stat.bits.isPress) {
-        if (enc_but->Onoff) {
-            enc_but->OnEditRPM = 0;
-            enc_but->Onoff = 0;
-            enc_but->currPromile = 0;
-        } else {
-            enc_but->OnEditRPM ^= 1;
+        CirclInc(enc_but->QuePress, 0, 2);
+        switch (enc_but->QuePress) {
+            case 0: enc_but->OnEditRPM = 1; break;
+            case 1:  enc_but->OnEditRPM = 0; break;
+            default:
+                enc_but->OnEditRPM = 0;
+                enc_but->Onoff = 0;
+                enc_but->currPromile = 0;
+                Inv_Hydr.TorqPercent -=  enc_but->HydTorq_add;
+                enc_but->HydTorq_add = 0;
+                MR_MCM_SetPWMOut_by_Name(enc_but->namePWM_IO, 0,0);
+                break;
         }
         enc_but->pEnc->stat.bits.isPress = 0;
     }
@@ -465,25 +473,25 @@ static void Brush_Adjst_cycl(encoder_butt * enc_but) {
             else if (enc_but->curValEnc < enc_but->pEnc->val)
                 inc_promile = 5;
             if(inc_promile){
-                enc_but->currPromile = constrain(enc_but->currPromile,enc_but->min , enc_but->max);
                 enc_but->currPromile += inc_promile;
                 enc_but->currPromile = constrain(enc_but->currPromile,enc_but->min , enc_but->max);
 
                 float diap = enc_but->max - enc_but->min;
-                s8 add =   (s8)((float)(enc_but->currPromile - enc_but->min) *  15.0f/diap); // 0.20588235f;(s8)((float)(40 - 25))/((float)(450-280))
-                Inv_Hydr.TorqPercent = 25 + add;
-
+                enc_but->HydTorq_add = (s8)((float)(enc_but->currPromile - enc_but->min) *  150.0f/diap); // 0.20588235f;(s8)((float)(40 - 25))/((float)(450-280))
             }
-            enc_but->Onoff = enc_but->currPromile > enc_but->min ? 1 : 0;
-
+            if(enc_but->currPromile >= enc_but->min)enc_but->Onoff = 1;
+            else enc_but->Onoff = 0;
             enc_but->curValEnc = enc_but->pEnc->val;
             enc_but->pEnc->stat.bits.isNew = 0;
         }
+        MR_MCM_SetPWMOut_by_Name(enc_but->namePWM_IO,
+                            400 * enc_but->Onoff,
+                            enc_but->currPromile * enc_but->Onoff);
     }
-    MR_MCM_SetPWMOut_by_Name(
-                        enc_but->namePWM_IO,
-                        400 * enc_but->Onoff,
-                        enc_but->currPromile * enc_but->Onoff);
+    enc_but->HydTorq_add = constrain(enc_but->HydTorq_add,0, 150);
+    s16 tTorq = Inv_Hydr.TorqPercent + enc_but->HydTorq_add;
+    tTorq = constrain(tTorq,250, 500);
+    Inv_Hydr.TorqPercent =  tTorq;
 
     SetVar(enc_but->hdl_VISU_BRSH_SPEED,enc_but->currPromile*enc_but->Onoff);
     SetVar(enc_but->hdl_VISU_BR_ACTIVE, enc_but->OnEditRPM);
@@ -590,8 +598,21 @@ static void Turb_cycl(void) {
     static s32 curValEnc = 0;
     static u8 OnEditTurbRPM = 0;
     static s16 currRPM = 0;
+    static u8 QuePress = 2;
+    static u8 OnOff = 0 ;
     if (TurbSpeedEnc.stat.bits.isPress) {
-            OnEditTurbRPM ^= 1;
+            // OnEditTurbRPM ^= 1;
+        CirclInc(QuePress, 0, 2);
+        switch (QuePress) {
+            case 0: OnEditTurbRPM = 1; break;
+            case 1: OnEditTurbRPM = 0; break;
+            default:
+                OnEditTurbRPM = 0;
+                OnOff = 0;
+                currRPM = 0;
+                SetVar(HDL_VACUUM_SPEED_VAR,0);
+                break;
+        }
             TurbSpeedEnc.stat.bits.isPress = 0;
     }
 
@@ -605,9 +626,11 @@ static void Turb_cycl(void) {
             currRPM += inc_rpm;
             currRPM = constrain(currRPM, 0, 3000);
             // u8 OnOff = 0;
-            // if (currRPM > 100) OnOff = 1;
+            if (currRPM > 100) OnOff = 1;
+            else OnOff = 0;
             // SendRequest_Turbo(OnOff, currRPM);
-            SetVar(HDL_VACUUM_SPEED_VAR,currRPM);
+            SetVar(HDL_VACUUM_SPEED_VAR,currRPM * OnOff);
+
             curValEnc = TurbSpeedEnc.val;
             TurbSpeedEnc.stat.bits.isNew = 0;
         }

@@ -23,7 +23,7 @@ static int parseInvert(tCanMessage *msg);
 // static void resetAll(void);
 static void sendCmd_HydrInv(u8 En);
 t_Inv_Profile Inv_Hydr;
-static void sendCmd_Hydr_Torque(u8 Percent);
+static void sendCmd_Hydr_Torque(u16 Promile);
 
 //**************************************
 int Ini_HydrInv_Thread(void) {
@@ -64,7 +64,7 @@ static u8 t = 100;
             t =100;
         } else if (Inv_Hydr.OnOff == ON_START) {
             if (GetVar(HDL_INVERTER_ON_HYD)) {
-                Inv_Hydr.TorqPercent = 26;
+                Inv_Hydr.TorqPercent = 250;
                 if(t)t --;
                 else{
                     Inv_Hydr.OnOff = ON_WORK;
@@ -123,13 +123,13 @@ static void sendCmd_HydrInv(u8 En) {
     tx_msg.data.u16[3] = mabs(powerAKB);
     CANSendMsg(&tx_msg);
 }
-static void sendCmd_Hydr_Torque(u8 Percent) {
-    static u8 prevPercnt =0;
+static void sendCmd_Hydr_Torque(u16 Promile) {
+    static u16 prevPromile =0;
     s8 step =0;
-    if(Percent > prevPercnt)step = 1;
-    else if(Percent < prevPercnt)step = -1;
-    prevPercnt += step;
-
+    if(Promile > prevPromile)step = 1;
+    else if(Promile < prevPromile)step = -1;
+    prevPromile += step;
+    prevPromile = constrain(prevPromile,0,1000);
     tCanMessage tx_msg;
     tx_msg.channel = ShassieCAN_ch;
     tx_msg.ext = 0;
@@ -137,7 +137,7 @@ static void sendCmd_Hydr_Torque(u8 Percent) {
     tx_msg.len = 8;
     tx_msg.res = 0;
     tx_msg.data.u16[0] = 0;
-    tx_msg.data.u16[1] = (u16)(327.67f *  prevPercnt);  // 0x7332;
+    tx_msg.data.u16[1] = (u16)(32.767f *  prevPromile);  // 0x7332;
     tx_msg.data.u32[1] = 0;
     CANSendMsg(&tx_msg);
 }
