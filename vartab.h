@@ -278,22 +278,26 @@
 #define IDX_KEY_YELLOW 133                       // Index
 #define HDL_KEY_GREY 135                         // Handle of KEY_GREY
 #define IDX_KEY_GREY 134                         // Index
+#define HDL_CURRENT_TURB 136                     // Handle of CURRENT_TURB
+#define IDX_CURRENT_TURB 135                     // Index
+#define HDL_OTHER_CURR 137                       // Handle of OTHER_CURR
+#define IDX_OTHER_CURR 136                       // Index
 #define HDL_SYS_U_SUPPLY 65524                   // Handle of SYS_U_SUPPLY
-#define IDX_SYS_U_SUPPLY 135                     // Index
+#define IDX_SYS_U_SUPPLY 137                     // Index
 #define HDL_SYS_ENC_RIGHT 65525                  // Handle of SYS_ENC_RIGHT
-#define IDX_SYS_ENC_RIGHT 136                    // Index
+#define IDX_SYS_ENC_RIGHT 138                    // Index
 #define HDL_SYS_ENC_LEFT 65526                   // Handle of SYS_ENC_LEFT
-#define IDX_SYS_ENC_LEFT 137                     // Index
+#define IDX_SYS_ENC_LEFT 139                     // Index
 #define HDL_SYS_TEMPERATURE 65527                // Handle of SYS_TEMPERATURE
-#define IDX_SYS_TEMPERATURE 138                  // Index
+#define IDX_SYS_TEMPERATURE 140                  // Index
 #define HDL_SYS_PRIORITY 65528                   // Handle of SYS_PRIORITY
-#define IDX_SYS_PRIORITY 139                     // Index
+#define IDX_SYS_PRIORITY 141                     // Index
 #define HDL_SYS_COLOR 65529                      // Handle of SYS_COLOR
-#define IDX_SYS_COLOR 140                        // Index
+#define IDX_SYS_COLOR 142                        // Index
 #define HDL_SYS_LANGUAGE 65530                   // Handle of SYS_LANGUAGE
-#define IDX_SYS_LANGUAGE 141                     // Index
+#define IDX_SYS_LANGUAGE 143                     // Index
 #define HDL_SYS_OPERATING_TIME 65531             // Handle of SYS_OPERATING_TIME
-#define IDX_SYS_OPERATING_TIME 142               // Index
+#define IDX_SYS_OPERATING_TIME 144               // Index
 
 /* Variable Groups */
 #define GROUP_BAT 1      // Handle of BAT
@@ -573,22 +577,26 @@
 #define KEY_YELLOW_idx 133                       // Index
 #define KEY_GREY 135                             // Handle of KEY_GREY
 #define KEY_GREY_idx 134                         // Index
+#define CURRENT_TURB 136                         // Handle of CURRENT_TURB
+#define CURRENT_TURB_idx 135                     // Index
+#define OTHER_CURR 137                           // Handle of OTHER_CURR
+#define OTHER_CURR_idx 136                       // Index
 #define SYS_U_SUPPLY 65524                       // Handle of SYS_U_SUPPLY
-#define SYS_U_SUPPLY_idx 135                     // Index
+#define SYS_U_SUPPLY_idx 137                     // Index
 #define SYS_ENC_RIGHT 65525                      // Handle of SYS_ENC_RIGHT
-#define SYS_ENC_RIGHT_idx 136                    // Index
+#define SYS_ENC_RIGHT_idx 138                    // Index
 #define SYS_ENC_LEFT 65526                       // Handle of SYS_ENC_LEFT
-#define SYS_ENC_LEFT_idx 137                     // Index
+#define SYS_ENC_LEFT_idx 139                     // Index
 #define SYS_TEMPERATURE 65527                    // Handle of SYS_TEMPERATURE
-#define SYS_TEMPERATURE_idx 138                  // Index
+#define SYS_TEMPERATURE_idx 140                  // Index
 #define SYS_PRIORITY 65528                       // Handle of SYS_PRIORITY
-#define SYS_PRIORITY_idx 139                     // Index
+#define SYS_PRIORITY_idx 141                     // Index
 #define SYS_COLOR 65529                          // Handle of SYS_COLOR
-#define SYS_COLOR_idx 140                        // Index
+#define SYS_COLOR_idx 142                        // Index
 #define SYS_LANGUAGE 65530                       // Handle of SYS_LANGUAGE
-#define SYS_LANGUAGE_idx 141                     // Index
+#define SYS_LANGUAGE_idx 143                     // Index
 #define SYS_OPERATING_TIME 65531                 // Handle of SYS_OPERATING_TIME
-#define SYS_OPERATING_TIME_idx 142               // Index
+#define SYS_OPERATING_TIME_idx 144               // Index
 #undef USE_OLDSTYLE_VARIABLE_SYMBOLS
 #endif
 

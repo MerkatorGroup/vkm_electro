@@ -226,6 +226,27 @@ typedef struct _HydroEng{
  float k_vs_ratio ;
 }HydroEng;
 
+
+
+typedef enum _InerpretPINS {
+pin3 = 0, pin4, pin5, pin6, pin7, pin8, pin9, pin10,
+pin20, pin21, pin22, pin23, pin24, pin25, pin26, pin27, pin28, pin29
+}InerpretPINS;
+
+typedef enum _InerpretDO_num {
+DO_p3 =1,				// DO_0
+DO_p4 = 4,				// DO_2
+DO_p5 = 2,				// DO_1
+DO_p6 = 8,				// DO_3
+DO_p7 = 32,				// DO_5
+DO_p8 = 128,			// DO_7
+DO_p9 = 16,				// DO_4
+DO_p10 = 64,				// DO_6
+DO_p28 = 256,				// DO_8
+DO_p29 = 512,				// DO_9
+}InerpretDO_num;
+
+
 /**
 * @brief
 *

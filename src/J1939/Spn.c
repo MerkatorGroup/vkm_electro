@@ -61,7 +61,7 @@ typedef struct _t_j1939_spn {
 		{5917, 61584,16,0.05,{0,3212},1,1,0,0,0},		//HVESS Available Discharge Power kW
 		{5918, 61584,16,0.05,{0,3212},3,1,0,0,0},		//HVESS Available Charge Power kW
 		{5919, 61584,16,0.05,{0,3212},5,1,0,0,0},		//Voltage Level	2 bytes	0.05 V per bit	0 V	0 to 3 212.75 V		V
-		{5920, 61584,16,0.05,{-1620,1620},7,1,0,0,0},		//Current	2 bytes	0.05 A per bit	-1 600 A	-1 600 to 1 612.75 A		A
+		{5920, 61584,16,0.05,{-1600,1612},7,1,0,0,0},		//Current	2 bytes	0.05 A per bit	-1 600 A	-1 600 to 1 612.75 A		A
 /////////////  F091
 		{5921, 61585,16,0.0015625,{0,100},1,1,0,0,0},		//Fast Update State of Charge	2 bytes	1/640 % per bit	0 %	0 to 100.398 437 5 %		%
 		{5922, 61585,16,0.001,{0,64},3,1,0,0,0},		//Highest Cell Voltage	2 bytes	0.001 V per bit	0 V	0 to 64.255 V		V

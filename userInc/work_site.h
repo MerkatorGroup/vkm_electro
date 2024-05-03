@@ -75,5 +75,7 @@ void main_brushAnim(void);
 void bunkerAnim(int up_dwn);
 void cover_set_up_dwn(void);
 void show_Y11_STAT(void);
+void show_Y8_STAT(void);
 void extBut_BOXUP_CB(u8 val);
+void show_current_of_unit(void) ;
 #endif  // WRK_SITE_H_

@@ -74,6 +74,7 @@ static void* Thread_AKB(void* arg) {
 		u32 Timer100ms = 10;
 		u32 WDT_AKB_Online = 0;
 		u8 EnableAKB = 0;
+		u32 time_TESTOUT_EN = 0;
     while (1) {
         tCanMessage* tMsg = (tCanMessage*)&buff[0];
         u32 n = CANReadFiFo(FifoRX_j1939_BATT, tMsg, 1);
@@ -117,6 +118,7 @@ static void* Thread_AKB(void* arg) {
 					if((valid_p == 1)&&(valid_n == 1)){
 						if((pos_cont == 1)&& (neg_cont == 1))
 						HVBattery.BatON_OFF_REQ =ON_WORK;
+						time_TESTOUT_EN = 501;
 					}
 				}else if(HVBattery.BatON_OFF_REQ == STOP ){
 					EnableAKB = 0;
@@ -128,8 +130,19 @@ static void* Thread_AKB(void* arg) {
 					if((valid_p == 1)&&(valid_n == 1)){
 						if((pos_cont == 0)&& (neg_cont == 0))
 						HVBattery.BatON_OFF_REQ = IDLE;
+
+						MR_SetDO_byName("test_out", 0);
 					}
 				}
+
+				if (time_TESTOUT_EN) {
+						time_TESTOUT_EN--;
+						if (time_TESTOUT_EN == 1) {
+								time_TESTOUT_EN = 0;
+								MR_SetDO_byName("test_out", 1);
+						}
+				}
+
         // u32 tWd = 0;
         // for (size_t i = 0; i < 32; i++) tWd = WDT_LEDS[i];
         // AKB_WDT_Timer();

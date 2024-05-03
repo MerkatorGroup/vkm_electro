@@ -25,10 +25,11 @@ static void wetting_cycl(void);
 static void fr_br_up_dwn_cycl(void) ;
 static void fr_br_tilt_cycl(void) ;
 static void fr_br_fold_cycl(void);
+static void Turb_boost_butt_cycl(void);
+
 
 static void side_brush_fold_cycl(void);
-// static void sideBrush_cycl(void) ;
-// static void main_Brush_cycl(void) ;
+static int parsePGN_Turbo(tCanMessage* msg);
 static void* Thread_EqWork(void* arg);
 static void* Thread_Turbo_Send(void* arg);
 static void Brush_Adjst_cycl(encoder_butt * enc_but);
@@ -44,6 +45,7 @@ butt wetting_butt = {.stat.raw = 0, .val = 0};//  увлажнение
 butt Frnt_br_butt_tilt = {.stat.raw = 0, .val = 0};//  пер щетка наклон
 butt Frnt_br_butt_up_dwn = {.stat.raw = 0, .val = 0};//  пер щетка опускание
 butt Frnt_br_butt_fold = {.stat.raw = 0, .val = 0};//  пер щетка раскл
+butt Turb_boost_butt = {.stat.raw = 0, .val = 0};//  форсаж турбины
 
 
 encoder_butt FrntBrshEncBut = {
@@ -68,7 +70,7 @@ encoder_butt sideBrshEncBut = {
   .Onoff =0, .OnEditRPM =0, .curValEnc =0,.currPromile =0,
 };
 
-u32 FiFo_WorkEq;
+u32 FiFo_WorkEq, FiFo_Turbo;
 tGsThread id_EqWorkThread;
 tGsThread id_TurboSendThr;
 static s8 coverReq = stat_idle;
@@ -78,10 +80,15 @@ static u32 CommonOnProc = 0;
 
 void ini_work_eq(void) {
     FiFo_WorkEq = CANCreateFiFo(64);
+    FiFo_Turbo = CANCreateFiFo(32);
     int rs =
         CANAddRxFilterFiFo(MCM_CAN_ch, 0x0CFDD803, 0x1FFFFFFF, 1, FiFo_WorkEq);
     rs = CANAddRxFilterFiFo(MCM_CAN_ch, 0x18FFA0E0, 0x1FFFFFFC, 1, FiFo_WorkEq);
     rs = CANAddRxFilterFiFo(MCM_CAN_ch, 0x18FF90E0, 0x1FFFFFFC, 1, FiFo_WorkEq);
+
+   rs = CANAddRxFilterFiFo(ShassieCAN_ch, 0x0C6C0900, 0x1FFF3FA3, 1, FiFo_Turbo);
+
+
 
     int th = gsThreadCreate(&id_EqWorkThread, NULL, Thread_EqWork, NULL);
     th = gsThreadCreate(&id_TurboSendThr, NULL, Thread_Turbo_Send, NULL);
@@ -121,6 +128,7 @@ void work_cycle(u8 mode_main) {
         fr_br_up_dwn_cycl();
         fr_br_tilt_cycl();
         fr_br_fold_cycl();
+        Turb_boost_butt_cycl();
         // usleep(10000);  /// 50 ms
     }
     if (CommonOnProc == 0){
@@ -262,7 +270,7 @@ static void bunker_cycl(void) {
 static void fr_br_fold_cycl(void) {
     if (Frnt_br_butt_fold.stat.bits.isNew) {
         if (Frnt_br_butt_fold.val & 0x10) {  // раскл
-            MR_SetDO_byName("lft_brsh_unfold", 1);
+            MR_SetDO_byName("fr_brsh_unfold", 1);
             usleep(COMON_DELAY);  /// 50 ms
             MR_SetDO_byName("hyd_comon", 1);
             CommonOnProc |= 16;
@@ -273,7 +281,7 @@ static void fr_br_fold_cycl(void) {
             CommonOnProc |= 16;
         } else {
             MR_SetDO_byName("fr_brsh_fold", 0);
-            MR_SetDO_byName("lft_brsh_unfold", 0);
+            MR_SetDO_byName("fr_brsh_unfold", 0);
             CommonOnProc &= ~((u32)16);
         }
         Frnt_br_butt_fold.val = 0;
@@ -312,6 +320,7 @@ static void fr_br_up_dwn_cycl(void) {
             CommonOnProc &= ~((u32)8);
 
         } else if ((Frnt_br_butt_up_dwn.val & 0x14) == 0x10) {  // поднимаем
+
             MR_SetDO_byName("fr_brsh_up", 1);
             usleep(COMON_DELAY);  /// 50 ms
             MR_SetDO_byName("hyd_comon", 1);
@@ -346,8 +355,8 @@ static void trunk_shaft_cycl(void) {
             MR_SetDO_byName("trunk_shaft_dwn", 0);
 
             MR_SetDO_byName("side_brsh_dwn", 1);
-            usleep(TIME_HYD_WORK);  /// 3s
-            MR_SetDO_byName("side_brsh_dwn", 0);
+            // usleep(TIME_HYD_WORK);  /// 3s
+            // MR_SetDO_byName("side_brsh_dwn", 0);
 
             // usleep(TIME_HYD_WORK);  /// 3s
             // MR_SetDO_byName("hyd_comon", 0);
@@ -356,6 +365,10 @@ static void trunk_shaft_cycl(void) {
 
         } else if (trunk_shaft_butt.val & 0x40) {  // поднимаем, складываем
         SendToVisuObj(OBJ_BUT_ACT_2, GS_TO_VISU_SET_ATTR_VISIBLE, 1);
+
+        MR_SetDO_byName("side_brsh_dwn", 0);
+            usleep(COMON_DELAY);  /// 50 ms
+
             MR_SetDO_byName("side_brsh_up", 1);
             MR_SetDO_byName("trunk_shaft_up", 1);
             usleep(COMON_DELAY);  /// 50 ms
@@ -382,7 +395,7 @@ static void trunk_shaft_cycl(void) {
         else if ((trunk_shaft_butt.val & 0x50) == 0) {
             // MR_SetDO_byName("hyd_comon", 0);
             CommonOnProc &= ~((u32)1);
-            MR_SetDO_byName("side_brsh_dwn", 0);
+            // MR_SetDO_byName("side_brsh_dwn", 0);
             MR_SetDO_byName("side_brsh_up", 0);
             MR_SetDO_byName("trunk_shaft_up", 0);
             MR_SetDO_byName("trunk_shaft_dwn", 0);
@@ -443,8 +456,6 @@ static void wetting_cycl(void) {
     MR_SetDO_byName("wetting", OnWetting);
 }
 
-
-
 static void Brush_Adjst_cycl(encoder_butt * enc_but) {
     if (enc_but->pEnc->stat.bits.isPress) {
         if (enc_but->Onoff) {
@@ -461,9 +472,9 @@ static void Brush_Adjst_cycl(encoder_butt * enc_but) {
         if (enc_but->pEnc->stat.bits.isNew) {
             s16 inc_promile = 0;
             if (enc_but->curValEnc > enc_but->pEnc->val)
-                inc_promile = -5;
+                inc_promile = -20;
             else if (enc_but->curValEnc < enc_but->pEnc->val)
-                inc_promile = 5;
+                inc_promile = 20;
             if(inc_promile){
                 enc_but->currPromile = constrain(enc_but->currPromile,enc_but->min , enc_but->max);
                 enc_but->currPromile += inc_promile;
@@ -499,120 +510,66 @@ static void Brush_Adjst_cycl(encoder_butt * enc_but) {
 }
 
 
-// static void main_Brush_cycl(void) {
-//     static s32 curValEnc = 0;
-//     static u8 OnEditMainBrRPM = 0;
-//     static s16 currPromile = 0;
-//     static u8 Onoff = 0;
-//     if (MainBrshSpeedEnc.stat.bits.isPress) {
-//         if (Onoff) {
-//             OnEditMainBrRPM = 0;
-//             Onoff = 0;
-//             currPromile = 0;
-//         } else {
-//             OnEditMainBrRPM ^= 1;
-//         }
-//         MainBrshSpeedEnc.stat.bits.isPress = 0;
-//     }
-//     if (OnEditMainBrRPM) {
-//         if (MainBrshSpeedEnc.stat.bits.isNew) {
-//             s16 inc_promile = 0;
-//             if (curValEnc > MainBrshSpeedEnc.val)
-//                 inc_promile = -5;
-//             else if (curValEnc < MainBrshSpeedEnc.val)
-//                 inc_promile = 5;
-//             if(inc_promile){
-//                 currPromile += inc_promile + 270;
-//                 currPromile = constrain(currPromile, 270, 450);
-//             }
-//             Onoff = currPromile > 270 ? 1 : 0;
-// //  s8 add =   (currPromile -280) * 0.20588235f; // (s8)((float)(60 - 25))/((float)(450-280))
-// //  Inv_Hydr.TorqPercent = 25 + add;
-//             curValEnc = MainBrshSpeedEnc.val;
-//             MainBrshSpeedEnc.stat.bits.isNew = 0;
-//         }
-//     }
-//     MR_MCM_SetPWMOut_by_Name("front_brush_spd", 400 * Onoff, currPromile * Onoff);
-//     SetVar(HDL_MAIN_BRSH_SPEED,currPromile*Onoff);
-//     SetVar(HDL_MAIN_BR_ACTIVE,OnEditMainBrRPM);
-//
-//     static int an_div = 20;
-//     if (dec_elapced(an_div)){
-//         if(currPromile > 0)   main_brushAnim();
-//         else SetVar(HDL_MAIN_BR_ANIM,0);
-//         an_div = 20;
-//     }
-// }
+static struct  {
+    u8  TurboOnoff ;
+    s32 curValEnc ;
+    u8 OnEditTurbRPM ;
+    s16 currRPM ;
+    s16 RPM_prev_boost ;
+    u8 OnBoost;
 
-// static void sideBrush_cycl(void) {
-//     static s32 curValEnc = 0;
-//     static u8 OnEditSideBrRPM = 0;
-//     static s16 currPromile = 0;
-//
-//
-//     if (SideBrshSpeedEnc.stat.bits.isPress) {
-//             OnEditSideBrRPM ^= 1;
-//             SideBrshSpeedEnc.stat.bits.isPress = 0;
-//     }
-//
-//     if (OnEditSideBrRPM) {
-//
-//         if (SideBrshSpeedEnc.stat.bits.isNew) {
-//             s16 inc_promile = 0;
-//             if (curValEnc > SideBrshSpeedEnc.val)
-//                 inc_promile = -5;
-//             else if (curValEnc < SideBrshSpeedEnc.val)
-//                 inc_promile = 5;
-//             currPromile += inc_promile;
-//             currPromile = constrain(currPromile, 280, 800);
-//             u8 Onoff = currPromile > 279 ? 1 : 0;
-//             //currPromile *= Onoff;
-//             MR_MCM_SetPWMOut_by_Name("side_brush_spd", 400, currPromile*Onoff);
-//
-//     //  s8 add =   (currPromile -280) * 0.20588235f; // (s8)((float)(60 - 25))/((float)(450-280))
-//     //  Inv_Hydr.TorqPercent = 25 + add;
-//
-//             SetVar(HDL_BRUSH_SPEED_VAR,currPromile*Onoff);
-//             curValEnc = SideBrshSpeedEnc.val;
-//             SideBrshSpeedEnc.stat.bits.isNew = 0;
-//         }
-//     }
-//     SetVar(HDL_BRUSH_ACTIVE_VAR,OnEditSideBrRPM);
-//     static int an_div = 20;
-//     if (dec_elapced(an_div)){
-//         if(currPromile > 0)  brushAnim();
-//         else SetVar(HDL_BRUSHESANIMATION,0);
-//         an_div = 20;
-//     }
-// }
+}turbo_Ctrl;
 
-static void Turb_cycl(void) {
-    static s32 curValEnc = 0;
-    static u8 OnEditTurbRPM = 0;
-    static s16 currRPM = 0;
-    if (TurbSpeedEnc.stat.bits.isPress) {
-            OnEditTurbRPM ^= 1;
-            TurbSpeedEnc.stat.bits.isPress = 0;
+static void Turb_boost_butt_cycl(void) {
+
+    if (Turb_boost_butt.stat.bits.isPress) {
+        Turb_boost_butt.stat.bits.isPress = 0;
+        if(turbo_Ctrl.OnBoost){
+            turbo_Ctrl.currRPM = turbo_Ctrl.RPM_prev_boost;
+            turbo_Ctrl.OnBoost =0;
+        }else{
+            turbo_Ctrl.RPM_prev_boost = turbo_Ctrl.currRPM;
+            turbo_Ctrl.currRPM = 3000;
+            turbo_Ctrl.OnBoost =1;
+        }
+        turbo_Ctrl.OnEditTurbRPM = 1;
     }
+}
+static void Turb_cycl(void) {
+    // static s32 curValEnc = 0;
+    // static u8 OnEditTurbRPM = 0;
+    // static s16 currRPM = 0;
 
-    if (OnEditTurbRPM) {
+    if (TurbSpeedEnc.stat.bits.isPress) {
+        if (turbo_Ctrl.TurboOnoff) {
+            turbo_Ctrl.OnEditTurbRPM = 0;
+            turbo_Ctrl.TurboOnoff  = 0;
+            turbo_Ctrl.currRPM= 0;
+            if(turbo_Ctrl.OnBoost){
+                turbo_Ctrl.currRPM = turbo_Ctrl.RPM_prev_boost;
+                turbo_Ctrl.OnBoost =0;
+            }
+        } else {
+            turbo_Ctrl.OnEditTurbRPM = 1;
+        }
+        TurbSpeedEnc.stat.bits.isPress = 0;
+    }
+    if (turbo_Ctrl.OnEditTurbRPM) {
         if (TurbSpeedEnc.stat.bits.isNew) {
             s16 inc_rpm = 0;
-            if (curValEnc > TurbSpeedEnc.val)
+            if (turbo_Ctrl.curValEnc > TurbSpeedEnc.val)
                 inc_rpm = -100;
-            else if (curValEnc < TurbSpeedEnc.val)
+            else if (turbo_Ctrl.curValEnc < TurbSpeedEnc.val)
                 inc_rpm = 100;
-            currRPM += inc_rpm;
-            currRPM = constrain(currRPM, 0, 3000);
-            // u8 OnOff = 0;
-            // if (currRPM > 100) OnOff = 1;
-            // SendRequest_Turbo(OnOff, currRPM);
-            SetVar(HDL_VACUUM_SPEED_VAR,currRPM);
-            curValEnc = TurbSpeedEnc.val;
+            turbo_Ctrl.currRPM += inc_rpm;
+            turbo_Ctrl.currRPM = constrain(turbo_Ctrl.currRPM, 0, 3000);
+            turbo_Ctrl.curValEnc = TurbSpeedEnc.val;
             TurbSpeedEnc.stat.bits.isNew = 0;
         }
+        turbo_Ctrl.TurboOnoff = (turbo_Ctrl.currRPM > 0);
+        SetVar(HDL_VACUUM_SPEED_VAR,turbo_Ctrl.currRPM);
     }
-    SetVar(HDL_VACUUM_ACTIVE_VAR,OnEditTurbRPM);
+    SetVar(HDL_VACUUM_ACTIVE_VAR,turbo_Ctrl.OnEditTurbRPM);
 }
 
 static void SendRequest_Turbo(u8 OnOff, u16 RPM) {
@@ -632,13 +589,38 @@ static void SendRequest_Turbo(u8 OnOff, u16 RPM) {
 }
 static void* Thread_Turbo_Send(void* arg){
         SetVar(HDL_VACUUM_SPEED_VAR,0);
+        turbo_Ctrl.currRPM =0;
+        turbo_Ctrl.curValEnc =0 ;
+       turbo_Ctrl.OnEditTurbRPM =0 ;
+       turbo_Ctrl.TurboOnoff = 0;
+       turbo_Ctrl.OnBoost = 0;
         usleep(2000000);
         while (1){
+
+        tCanMessage tMsg;
+        u32 n = CANReadFiFo(FiFo_Turbo, &tMsg, 1);
+        if (n) {
+            parsePGN_Turbo(&tMsg);
+        }
+
+
             u32 tRpm =GetVar(HDL_VACUUM_SPEED_VAR);
-            SendRequest_Turbo((tRpm > 0),tRpm );
+            SendRequest_Turbo(turbo_Ctrl.TurboOnoff,tRpm );
           usleep(20000);
         }
     return 0;
+}
+static int parsePGN_Turbo(tCanMessage* msg) {
+s32 currentTurb;
+    switch (msg->id) {
+        case 0x0C6CC950:
+            currentTurb = msg->data.s16[1];
+            currentTurb /= 10;
+            currentTurb -= 400;
+            SetVar(HDL_CURRENT_TURB, currentTurb);
+        break;
+    }
+
 }
 
 
@@ -665,6 +647,19 @@ static int parsePGN_WorkCtrl(tCanMessage* msg) {
             if (Frnt_br_butt_fold.stat.bits.isNew == 0) {
                 Frnt_br_butt_fold.stat.bits.isNew = 1;
                 Frnt_br_butt_fold.val = (msg->data.u8[5] & 0x50);
+            }
+
+            u8 stat = (msg->data.u8[5] & 0x01);
+            if (stat) {
+                u32 tdelay = turbo_Ctrl.OnBoost ? 0 : 60;
+                if (Turb_boost_butt.stat.bits.isPress == 0) {
+                    Turb_boost_butt.val++;
+                    if (Turb_boost_butt.val > tdelay) {
+                        Turb_boost_butt.stat.bits.isPress = 1;
+                    }
+                }
+            } else {
+                Turb_boost_butt.val = 0;
             }
 
             break;

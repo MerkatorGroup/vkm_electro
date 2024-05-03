@@ -263,7 +263,7 @@ int parseSPN(t_j1939_spn* pSpn, u64* p_data) {  //, float* CalcValue) {
     }
     u64 mask = ((u64)mask1 << 32) | (u64)mask2;
     u64 rawB = (data & mask) >> start;
-    float Val = rawB * pSpn->resolution + pSpn->RangeMinMax[0];
+    float Val = (float)rawB * pSpn->resolution + pSpn->RangeMinMax[0];
     //	if ((Val > pSpn->RangeMinMax[1]) || (Val < pSpn->RangeMinMax[0]))
     if (IsInRange(Val, pSpn->RangeMinMax[0], pSpn->RangeMinMax[1])) {
         pSpn->floatValue = Val;

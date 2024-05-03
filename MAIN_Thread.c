@@ -57,7 +57,7 @@ void *Thread_MAIN(void *arg) {
     ini_work_eq();
 
 MR_SetDO_byName("key_pos_2" , 0 );  // сброс поддержки питания
-MR_MCM_SetPWMOut_by_Name("coolant_pump_spd" , 400, 950) ;
+
 
     while (1) {
         u8 fBatLowL = GetVar(HDL_BAT_LOW_LVL_CHRG);
@@ -91,6 +91,8 @@ SetVar(HDL_TRANS_SPEED, (u32)velosity);
 
 
        work_cycle(mode_operation);
+
+       show_current_of_unit();
 
         usleep(10000);  /// 10 ms
     }
@@ -195,6 +197,7 @@ void Start_Stop_routine(void) {
 //   u8 dout =GetVar(HDL_POWERSUPLAYPIN);
 //                 SetDOut(dout, 1);
 MR_SetDO_byName("key_pos_2" , 1 );
+MR_MCM_SetPWMOut_by_Name("coolant_pump_spd" , 400, 950) ;
             }
             startQue = 3;
             break;
@@ -219,6 +222,7 @@ MR_SetDO_byName("key_pos_2" , 1 );
 //   u8 dout =GetVar(HDL_POWERSUPLAYPIN);
 //                 SetDOut(dout, 0);
 MR_SetDO_byName("key_pos_2" , 0 );
+MR_MCM_SetPWMOut_by_Name("coolant_pump_spd" , 0, 0) ;
                 mode_operation = IDLE;
             }
             startQue = 1;

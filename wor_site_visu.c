@@ -20,15 +20,24 @@
 void showWorkSite(){
 
 }
-void showbutt_ext(){
-  // u8 v =
-  // SendToVisuObj(OBJ_BUT_ACT_1, GS_TO_VISU_SET_ATTR_VISIBLE, 1);
+void showbutt_ext() {
+    // u8 v =
+    // SendToVisuObj(OBJ_BUT_ACT_1, GS_TO_VISU_SET_ATTR_VISIBLE, 1);
 }
-void brushAnim(void){
-  s32 ind = GetVar(HDL_BRUSHESANIMATION);
-  ind++;
-  FillOnCircL(ind,1,5);
-  SetVar(HDL_BRUSHESANIMATION,ind);
+
+void show_current_of_unit(void) {
+    s32 currentAKB = GetVar(HDL_CURRENT);
+    s32 currentHyd = GetVar(HDL_INVERTER_CURRENT_HYD);
+    s32 currentEng = GetVar(HDL_INVERTER_CURRENT);
+    s32 currentTurbo = GetVar(HDL_CURRENT_TURB);
+    s32 All_Other_Curr = currentAKB - currentHyd - currentEng - currentTurbo;
+    SetVar(HDL_OTHER_CURR, All_Other_Curr);
+}
+void brushAnim(void) {
+    s32 ind = GetVar(HDL_BRUSHESANIMATION);
+    ind++;
+    FillOnCircL(ind, 1, 5);
+    SetVar(HDL_BRUSHESANIMATION, ind);
 }
 void main_brushAnim(void){
   s32 ind = GetVar(HDL_MAIN_BR_ANIM);
@@ -50,3 +59,8 @@ void show_Y11_STAT(void) {
                   ((GetVar(SlvMCMs[0].MCM.MCM250.Var_digOut) & 1) == 0));
 }
 
+
+void show_Y8_STAT(void) {
+    SendToVisuObj(OBJ_Y8_STAT, GS_TO_VISU_SET_ATTR_TRANSPARENT,
+                  ((GetVar(SlvMCMs[0].MCM.MCM250.Var_digOut) & DO_p5) == 0));
+}
