@@ -163,4 +163,5 @@ void UserCTimer(void) {
     //     CAN_Send_Time_Duty = 10;
     //   }
     show_Y11_STAT();
+    show_Y8_STAT();
 }
